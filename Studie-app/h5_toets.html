@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>H1 Toets – Wiskunde 2 HV</title>
+  <title>H5 Toets – Wiskunde 2 HV</title>
   <link rel="stylesheet" href="stijl.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -19,7 +19,7 @@
     <a href="wiskunde.html" class="back-btn">← Terug</a>
     <div class="topbar-title">
       <span class="icon">📝</span>
-      <h1>Hoofdstuk 1 – Toets</h1>
+      <h1>Hoofdstuk 5 – Toets</h1>
     </div>
   </div>
 
@@ -34,62 +34,46 @@
       </div>
     </div>
 
-    <!-- Vraag 1 · §1.1 · MC -->
+    <!-- Vraag 1 · §5.1 · MC -->
     <div class="kaart">
-      <p class="kaart-titel">Vraag 1 &nbsp;·&nbsp; §1.1 Gehele getallen</p>
-      <p class="vraag-tekst">Bereken: \(-6 - (-9)\)</p>
+      <p class="kaart-titel">Vraag 1 &nbsp;·&nbsp; §5.1 Procenten</p>
+      <p class="vraag-tekst">Welk percentage is \(36\) van \(120\)?</p>
       <div class="test-mc">
-        <label id="q1_opt0"><input type="radio" name="q1" value="0"> \(-15\)</label>
-        <label id="q1_opt1"><input type="radio" name="q1" value="1"> \(-3\)</label>
-        <label id="q1_opt2"><input type="radio" name="q1" value="2"> \(3\)</label>
-        <label id="q1_opt3"><input type="radio" name="q1" value="3"> \(15\)</label>
+        <label id="q1_opt0"><input type="radio" name="q1" value="0"> \(25\%\)</label>
+        <label id="q1_opt1"><input type="radio" name="q1" value="1"> \(30\%\)</label>
+        <label id="q1_opt2"><input type="radio" name="q1" value="2"> \(35\%\)</label>
+        <label id="q1_opt3"><input type="radio" name="q1" value="3"> \(40\%\)</label>
       </div>
       <div id="q1-fb" hidden></div>
     </div>
 
-    <!-- Vraag 2 · §1.2 · Open -->
+    <!-- Vraag 2 · §5.2 · Open -->
     <div class="kaart">
-      <p class="kaart-titel">Vraag 2 &nbsp;·&nbsp; §1.2 Breuken optellen/aftrekken</p>
-      <p class="vraag-tekst">Bereken: \(\dfrac{5}{6} - \dfrac{1}{4}\) &nbsp;(vereenvoudigd)</p>
-      <input type="text" class="test-input" id="q2" placeholder="breuk a/b">
+      <p class="kaart-titel">Vraag 2 &nbsp;·&nbsp; §5.2 Procentuele toe-/afname</p>
+      <p class="vraag-tekst">Een fiets kost €\(240\). De prijs wordt verlaagd met \(15\%\). Wat is de prijs na verlaging (in €)?</p>
+      <input type="text" class="test-input" id="q2" placeholder="Antwoord">
       <div id="q2-fb" hidden></div>
     </div>
 
-    <!-- Vraag 3 · §1.3 · Open -->
+    <!-- Vraag 3 · §5.3 · MC -->
     <div class="kaart">
-      <p class="kaart-titel">Vraag 3 &nbsp;·&nbsp; §1.3 Breuken vermenigvuldigen</p>
-      <p class="vraag-tekst">Bereken: \(\dfrac{3}{5} \times \dfrac{10}{9}\) &nbsp;(vereenvoudigd)</p>
-      <input type="text" class="test-input" id="q3" placeholder="breuk a/b">
+      <p class="kaart-titel">Vraag 3 &nbsp;·&nbsp; §5.3 Verhoudingen</p>
+      <p class="vraag-tekst">€\(420\) wordt verdeeld in de verhouding \(3:4\). Wat is het grootste deel?</p>
+      <div class="test-mc">
+        <label id="q3_opt0"><input type="radio" name="q3" value="0"> €\(180\)</label>
+        <label id="q3_opt1"><input type="radio" name="q3" value="1"> €\(200\)</label>
+        <label id="q3_opt2"><input type="radio" name="q3" value="2"> €\(220\)</label>
+        <label id="q3_opt3"><input type="radio" name="q3" value="3"> €\(240\)</label>
+      </div>
       <div id="q3-fb" hidden></div>
     </div>
 
-    <!-- Vraag 4 · §1.4 · Open -->
+    <!-- Vraag 4 · §5.4 · Open -->
     <div class="kaart">
-      <p class="kaart-titel">Vraag 4 &nbsp;·&nbsp; §1.4 Kommagetallen</p>
-      <p class="vraag-tekst">Rond \(8{,}465\) af op 2 decimalen.</p>
-      <input type="text" class="test-input" id="q4" placeholder="2 decimalen">
+      <p class="kaart-titel">Vraag 4 &nbsp;·&nbsp; §5.4 Schaal</p>
+      <p class="vraag-tekst">Schaal \(1:40.000\). Op de kaart meet een afstand \(7\) cm. Wat is de werkelijke afstand in km?</p>
+      <input type="text" class="test-input" id="q4" placeholder="getal">
       <div id="q4-fb" hidden></div>
-    </div>
-
-    <!-- Vraag 5 · §1.5 · MC -->
-    <div class="kaart">
-      <p class="kaart-titel">Vraag 5 &nbsp;·&nbsp; §1.5 Machten en wortels</p>
-      <p class="vraag-tekst">Wat is \(\sqrt{196}\,\)?</p>
-      <div class="test-mc">
-        <label id="q5_opt0"><input type="radio" name="q5" value="0"> \(13\)</label>
-        <label id="q5_opt1"><input type="radio" name="q5" value="1"> \(14\)</label>
-        <label id="q5_opt2"><input type="radio" name="q5" value="2"> \(15\)</label>
-        <label id="q5_opt3"><input type="radio" name="q5" value="3"> \(16\)</label>
-      </div>
-      <div id="q5-fb" hidden></div>
-    </div>
-
-    <!-- Vraag 6 · §1.6 · Open -->
-    <div class="kaart">
-      <p class="kaart-titel">Vraag 6 &nbsp;·&nbsp; §1.6 Rekenvolgorde</p>
-      <p class="vraag-tekst">Bereken: \(3 \times (4 + 2)^2 - 10\)</p>
-      <input type="text" class="test-input" id="q6" placeholder="Antwoord">
-      <div id="q6-fb" hidden></div>
     </div>
 
     <!-- Knoppen -->
@@ -102,20 +86,16 @@
 
   <script>
     const VRAGEN = [
-      { id: 'q1', type: 'mc',   correct: 2,      antwoord: '3',
-        uitleg: '−6 − (−9) = −6 + 9 = 3.',
+      { id: 'q1', type: 'mc',   correct: 1,      antwoord: '30%',
+        uitleg: '(36 ÷ 120) × 100 = 30%.',
         opts: ['q1_opt0','q1_opt1','q1_opt2','q1_opt3'] },
-      { id: 'q2', type: 'open', correct: '7/12',  antwoord: '7/12',
-        uitleg: 'Noemer 12: 10/12 − 3/12 = 7/12.' },
-      { id: 'q3', type: 'open', correct: '2/3',   antwoord: '2/3',
-        uitleg: '3/5 × 10/9 = 30/45 = 2/3.' },
-      { id: 'q4', type: 'open', correct: '8.47',  antwoord: '8,47',
-        uitleg: 'Derde decimaal is 5 ≥ 5, dus opronden: 8,47.' },
-      { id: 'q5', type: 'mc',   correct: 1,      antwoord: '14',
-        uitleg: '14² = 196, dus √196 = 14.',
-        opts: ['q5_opt0','q5_opt1','q5_opt2','q5_opt3'] },
-      { id: 'q6', type: 'open', correct: '98',    antwoord: '98',
-        uitleg: 'Haakjes: (4+2)=6; macht: 6²=36; ×: 3×36=108; −10=98.' },
+      { id: 'q2', type: 'open', correct: '204',   antwoord: '204',
+        uitleg: '240 × 0,85 = €204.' },
+      { id: 'q3', type: 'mc',   correct: 3,      antwoord: '€240',
+        uitleg: '1 deel = 420 ÷ 7 = 60. Groot deel = 4 × 60 = €240.',
+        opts: ['q3_opt0','q3_opt1','q3_opt2','q3_opt3'] },
+      { id: 'q4', type: 'open', correct: '2.8',   antwoord: '2,8',
+        uitleg: '7 × 40.000 = 280.000 cm = 2,8 km.' },
     ];
 
     function submitToets() {
@@ -150,12 +130,12 @@
           : `Juist antwoord: ${q.antwoord}. ${q.uitleg}`;
       });
 
-      document.getElementById('scoreDisplay').textContent = `${score} van 6`;
+      document.getElementById('scoreDisplay').textContent = `${score} van 4`;
       const vEl = document.getElementById('verdictDisplay');
-      if (score === 6) {
+      if (score === 4) {
         vEl.textContent = '🌟 Uitstekend!';
         vEl.className = 'result-verdict verdict-pass';
-      } else if (score >= 4) {
+      } else if (score >= 3) {
         vEl.textContent = '✓ Voldoende';
         vEl.className = 'result-verdict verdict-voldoende';
       } else {

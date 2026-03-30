@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H6 Theorie – Wiskunde 2 HV</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body,{delimiters:[
+            {left:'\\(',right:'\\)',display:false},
+            {left:'\\[',right:'\\]',display:true}
+          ]})"></script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="wiskunde.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">📐</span>
+      <h1>Hoofdstuk 6 – Theorie</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s61',this)">§6.1</button>
+      <button type="button" class="nav-btn" onclick="toon('s62',this)">§6.2</button>
+      <button type="button" class="nav-btn" onclick="toon('s63',this)">§6.3</button>
+      <button type="button" class="nav-btn" onclick="toon('s64',this)">§6.4</button>
+      <button type="button" class="nav-btn" onclick="toon('s65',this)">§6.5</button>
+    </nav>
+
+    <!-- §6.1 Hoeken -->
+    <div class="sectie actief" id="s61">
+      <div class="kaart">
+        <p class="kaart-titel">§6.1 – Hoeken</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>Hoeken meten in graden. Soorten: scherp (&lt;90°), recht (=90°), stomp (90°–180°), gestrekt (=180°).</li>
+          <li><span class="step-num">2</span>Hoeken in een driehoek tellen op tot 180°.</li>
+          <li><span class="step-num">3</span>Nevenhoeken tellen op tot 180°; tophoeken zijn gelijk.</li>
+        </ol>
+        <p class="voorbeeld-kop">Voorbeeld</p>
+        <div class="formula">Driehoek met hoeken 50° en 70°. Derde hoek \(= 180° - 50° - 70° = 60°\).</div>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Som driehoek \(= 180°\); nevenhoeken \(= 180°\); tophoeken gelijk.
+        </div>
+      </div>
+    </div>
+
+    <!-- §6.2 Bijzondere driehoeken -->
+    <div class="sectie" id="s62">
+      <div class="kaart">
+        <p class="kaart-titel">§6.2 – Bijzondere driehoeken</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>Gelijkzijdig: alle zijden gelijk, alle hoeken 60°.</li>
+          <li><span class="step-num">2</span>Gelijkbenig: twee zijden gelijk, basishoeken gelijk.</li>
+          <li><span class="step-num">3</span>Rechthoekig: één hoek van 90°, schuine zijde tegenover de rechte hoek.</li>
+        </ol>
+        <p class="voorbeeld-kop">Voorbeeld</p>
+        <div class="formula">Gelijkbenige driehoek, tophoek 40°. Basishoeken \(= (180° - 40°) \div 2 = 70°\).</div>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Gelijkbenig: basishoeken gelijk. Gelijkzijdig: alle hoeken 60°. Rechthoekig: een hoek \(= 90°\).
+        </div>
+      </div>
+    </div>
+
+    <!-- §6.3 Gelijkvormige figuren -->
+    <div class="sectie" id="s63">
+      <div class="kaart">
+        <p class="kaart-titel">§6.3 – Gelijkvormige figuren</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>Figuren zijn gelijkvormig als ze dezelfde vorm maar verschillende afmetingen hebben (zelfde hoeken).</li>
+          <li><span class="step-num">2</span>Verhoudingsgetal \(k\): alle zijden zijn \(k\) keer zo groot.</li>
+          <li><span class="step-num">3</span>Bereken een onbekende zijde via de verhouding.</li>
+        </ol>
+        <p class="voorbeeld-kop">Voorbeeld</p>
+        <div class="formula">Driehoeken met overeenkomstige zijden 6 en 9. \(k = 9 \div 6 = 1{,}5\). Zijde 8 wordt \(8 \times 1{,}5 = 12\).</div>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Gelijkvormig: gelijke hoeken, zijden in gelijke verhouding. \(k = \text{nieuw} \div \text{oud}\).
+        </div>
+      </div>
+    </div>
+
+    <!-- §6.4 Stelling van Pythagoras -->
+    <div class="sectie" id="s64">
+      <div class="kaart">
+        <p class="kaart-titel">§6.4 – Stelling van Pythagoras</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>In een rechthoekige driehoek: \(a^2 + b^2 = c^2\) (\(c\) is de schuine zijde).</li>
+          <li><span class="step-num">2</span>Schuine zijde: \(c = \sqrt{a^2 + b^2}\).</li>
+          <li><span class="step-num">3</span>Rechthoekszijde: \(a = \sqrt{c^2 - b^2}\).</li>
+        </ol>
+        <p class="voorbeeld-kop">Voorbeeld</p>
+        <div class="formula">\(a = 6,\ b = 8\). \(c = \sqrt{36 + 64} = \sqrt{100} = 10\).</div>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          \(a^2 + b^2 = c^2\). Schuine zijde: \(c = \sqrt{a^2 + b^2}\). Controleer: grootste zijde altijd \(c\).
+        </div>
+      </div>
+    </div>
+
+    <!-- §6.5 Oppervlakte en omtrek -->
+    <div class="sectie" id="s65">
+      <div class="kaart">
+        <p class="kaart-titel">§6.5 – Oppervlakte en omtrek</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>Rechthoek: \(O = l \times b\), omtrek \(= 2(l + b)\). Driehoek: \(O = \tfrac{1}{2} \times \text{basis} \times \text{hoogte}\).</li>
+          <li><span class="step-num">2</span>Cirkel: \(O = \pi \times r^2\), omtrek \(= 2\pi r\).</li>
+          <li><span class="step-num">3</span>Samengestelde figuren: splits op in bekende vormen, tel oppervlakten bij elkaar op.</li>
+        </ol>
+        <p class="voorbeeld-kop">Voorbeeld</p>
+        <div class="formula">Cirkel \(r = 5\) cm. \(O = \pi \times 25 \approx 78{,}5\ \text{cm}^2\). Omtrek \(= 2\pi \times 5 \approx 31{,}4\ \text{cm}\).</div>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Rechthoek: \(O = l \times b\). Driehoek: \(O = \tfrac{1}{2}bh\). Cirkel: \(O = \pi r^2\), omtrek \(= 2\pi r\).
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

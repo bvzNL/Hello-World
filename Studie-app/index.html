@@ -216,12 +216,14 @@
 
     /**
      * Calculate and display the overall completion percentage.
+     * Only counts subjects that are ready (have actual pages).
      */
     function renderOverallProgress() {
-      const totalPhases = SUBJECTS.length * 3;
+      const readySubjects = SUBJECTS.filter(s => s.ready);
+      const totalPhases = readySubjects.length * 3;
       let donePhases = 0;
 
-      SUBJECTS.forEach(subject => {
+      readySubjects.forEach(subject => {
         donePhases += getProgress(subject.id).filter(Boolean).length;
       });
 
@@ -242,8 +244,11 @@
     }
 
     // ===== INIT =====
-    renderCards();
-    renderOverallProgress();
+    // Refresh on every visit (also when navigating back via browser)
+    window.addEventListener('pageshow', () => {
+      renderCards();
+      renderOverallProgress();
+    });
   </script>
 </body>
 </html>

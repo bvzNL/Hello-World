@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H8 Oefeningen – Wiskunde 2 HV</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body,{delimiters:[
+            {left:'\\(',right:'\\)',display:false},
+            {left:'\\[',right:'\\]',display:true}
+          ]})"></script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="wiskunde.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">📊</span>
+      <h1>Hoofdstuk 8 – Oefeningen</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s81',this)">§8.1</button>
+      <button type="button" class="nav-btn" onclick="toon('s82',this)">§8.2</button>
+      <button type="button" class="nav-btn" onclick="toon('s83',this)">§8.3</button>
+      <button type="button" class="nav-btn" onclick="toon('s84',this)">§8.4</button>
+    </nav>
+
+    <!-- §8.1 Gemiddelde -->
+    <div class="sectie actief" id="s81">
+      <div class="kaart">
+        <p class="kaart-titel">§8.1 – Gemiddelde</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> De cijfers van een leerling zijn: \(6,\;8,\;7,\;9,\;5\). Wat is het gemiddelde?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q81a" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q81a','7','Som = 6+8+7+9+5 = 35. Gemiddelde = 35 ÷ 5 = 7.')">Controleer</button>
+          </div>
+          <div id="q81a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Drie metingen zijn \(12,\;15,\;18\). Wat is het gemiddelde?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q81b" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q81b','15','Som = 45. Gemiddelde = 45 ÷ 3 = 15.')">Controleer</button>
+          </div>
+          <div id="q81b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Het gemiddelde van vier getallen is \(9\). Drie van de getallen zijn \(7,\;10,\;8\). Wat is het vierde getal?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q81c" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q81c','11','Totale som = 9 × 4 = 36. Vierde getal = 36 − 7 − 10 − 8 = 11.')">Controleer</button>
+          </div>
+          <div id="q81c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h81c')">💡 Hint</button>
+          <div class="hint-tekst" id="h81c">Bereken eerst de totale som (gemiddelde × aantal), trek de bekende waarden af.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §8.2 Mediaan en modus -->
+    <div class="sectie" id="s82">
+      <div class="kaart">
+        <p class="kaart-titel">§8.2 – Mediaan en modus</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Dataset: \(3,\;7,\;5,\;9,\;1\). Wat is de mediaan?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q82a" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q82a','5','Gesorteerd: 1, 3, 5, 7, 9. Middelste = 5.')">Controleer</button>
+          </div>
+          <div id="q82a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Dataset: \(4,\;4,\;6,\;8,\;4,\;10\). Wat is de modus?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q82b" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q82b','4','4 komt drie keer voor, meer dan alle andere waarden.')">Controleer</button>
+          </div>
+          <div id="q82b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Dataset: \(2,\;6,\;9,\;13\). Wat is de mediaan?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q82c" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q82c','7.5','Twee middelste waarden: 6 en 9. Mediaan = (6 + 9) ÷ 2 = 7,5.')">Controleer</button>
+          </div>
+          <div id="q82c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h82c')">💡 Hint</button>
+          <div class="hint-tekst" id="h82c">Bij een even aantal waarden: neem het gemiddelde van de twee middelste waarden.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §8.3 Frequentietabel en bereik -->
+    <div class="sectie" id="s83">
+      <div class="kaart">
+        <p class="kaart-titel">§8.3 – Frequentietabel en bereik</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Dataset: \(3,\;7,\;5,\;7,\;9,\;3,\;5,\;5\). Wat is het bereik?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q83a" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q83a','6','Bereik = 9 − 3 = 6.')">Controleer</button>
+          </div>
+          <div id="q83a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> In een frequentietabel komen de waarden \(1, 2, 3\) resp. \(4, 6, 2\) keer voor. Hoeveel datapunten zijn er in totaal?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q83b" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q83b','12','4 + 6 + 2 = 12 datapunten.')">Controleer</button>
+          </div>
+          <div id="q83b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Waarden \(1, 2, 3\) komen resp. \(4, 6, 2\) keer voor. Wat is het gemiddelde? (Rond af op 1 decimaal.)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q83c" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q83c','1.8','Som = 1×4 + 2×6 + 3×2 = 4+12+6 = 22. Gemiddelde = 22 ÷ 12 ≈ 1,8.')">Controleer</button>
+          </div>
+          <div id="q83c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h83c')">💡 Hint</button>
+          <div class="hint-tekst" id="h83c">Gewogen som = elke waarde × frequentie, opgeteld. Deel door totaal.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §8.4 Diagrammen lezen -->
+    <div class="sectie" id="s84">
+      <div class="kaart">
+        <p class="kaart-titel">§8.4 – Diagrammen lezen</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> In een klas van \(25\) leerlingen kiest \(8\) de kleur rood. Hoeveel graden heeft het taartpunt voor rood in een cirkeldiagram?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q84a" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q84a','115.2','(8 ÷ 25) × 360° = 0,32 × 360° = 115,2°.')">Controleer</button>
+          </div>
+          <div id="q84a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Een taartpunt heeft een hoek van \(90°\). Hoeveel procent van het totaal is dit?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q84b" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q84b','25','(90 ÷ 360) × 100 = 25%.')">Controleer</button>
+          </div>
+          <div id="q84b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> In een staafdiagram zijn de staven voor jan/feb/mrt resp. \(20,\;35,\;25\). Wat is het gemiddelde per maand?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q84c" placeholder="getal">
+            <button type="button" class="check-btn" onclick="check('q84c','26.7','(20 + 35 + 25) ÷ 3 = 80 ÷ 3 ≈ 26,7.')">Controleer</button>
+          </div>
+          <div id="q84c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h84c')">💡 Hint</button>
+          <div class="hint-tekst" id="h84c">Gemiddelde = som ÷ aantal. Rond af op 1 decimaal.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+
+    function check(id, antwoord, uitleg) {localStorage.setItem("studie_wiskunde_phase2","done");
+      const input = document.getElementById(id);
+      if (input.disabled) return;
+      const user = input.value.trim().replace(',', '.').replace(/\s/g, '').toLowerCase();
+      const correct = antwoord.trim().replace(',', '.').replace(/\s/g, '').toLowerCase();
+      const ok = user === correct;
+      const fb = document.getElementById(id + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = uitleg;
+      input.disabled = true;
+      const btn = input.nextElementSibling;
+      if (btn) btn.disabled = true;
+    }
+
+    function toggleHint(id) {
+      document.getElementById(id).classList.toggle('zichtbaar');
+    }
+  </script>
+
+</body>
+</html>

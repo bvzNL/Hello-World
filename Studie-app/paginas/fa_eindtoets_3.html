@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frans Eindtoets – Deel 3</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <style>
+    .et-meta{text-align:center;margin-bottom:8px}.et-sub{font-size:.85rem;color:#888}
+    .et-progress{display:flex;justify-content:center;gap:16px;font-size:1.5rem;margin:6px 0}
+    .et-progress .done{color:#2ec4b6}.et-progress .now{color:#4361ee}
+    .et-timer{text-align:right;font-weight:700;font-size:1.1rem}.et-timer.urgent{color:#e63946}
+    .stelling-opts{display:flex;gap:16px;margin:10px 0}
+    .stelling-opts label{display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer}
+    .sub-q{font-size:.88rem;font-weight:700;color:#4361ee;margin:14px 0 4px}
+    .et-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .totaal-box{background:#f0f4ff;border-radius:10px;padding:16px;margin:10px 0;text-align:center}
+    .totaal-score{font-size:2rem;font-weight:900;color:#4361ee}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="fa_eindtoets_2.html" class="back-btn">← Terug naar Deel 2</a>
+    <div class="topbar-title">
+      <span class="icon">🇫🇷</span>
+      <h1>Frans Eindtoets – Deel 3 van 3</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div class="et-meta">
+      <p class="et-sub">Chapitre 4 · Vragen 21–30</p>
+      <div class="et-progress">
+        <span class="done">✓</span><span class="done">✓</span><span class="now">●</span>
+      </div>
+      <div class="et-timer" id="timer">30:00</div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 21 – Ch.4 Partir</p>
+      <p class="vraag-tekst">Vervoeging: <strong>nous</strong> ___ (partir)</p>
+      <input type="text" class="test-input" id="q21" placeholder="nous ...">
+      <div id="q21-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 22 – Ch.4 Sortir</p>
+      <p class="vraag-tekst">Vervoeging: <strong>ils</strong> ___ (sortir)</p>
+      <input type="text" class="test-input" id="q22" placeholder="ils ...">
+      <div id="q22-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 23 – Ch.4 Voorzetsel à</p>
+      <p class="vraag-tekst">Welke vorm past? <em>Je vais _____ stade.</em> (le stade)</p>
+      <div class="test-mc">
+        <label id="q23_opt0"><input type="radio" name="q23" value="0"> à la</label>
+        <label id="q23_opt1"><input type="radio" name="q23" value="1"> au</label>
+        <label id="q23_opt2"><input type="radio" name="q23" value="2"> aux</label>
+        <label id="q23_opt3"><input type="radio" name="q23" value="3"> à l'</label>
+      </div>
+      <div id="q23-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 24 – Ch.4 Passé composé être (mannelijk)</p>
+      <p class="vraag-tekst">Zet in de passé composé: <em>il (aller)</em></p>
+      <input type="text" class="test-input" id="q24" placeholder="il est ...">
+      <div id="q24-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 25 – Ch.4 Passé composé être (vrouwelijk)</p>
+      <p class="vraag-tekst">Zet in de passé composé: <em>elle (partir)</em></p>
+      <input type="text" class="test-input" id="q25" placeholder="elle est ...">
+      <div id="q25-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 26 – Ch.4 Vocabulaire</p>
+      <p class="vraag-tekst">Wat betekent <em>se blesser</em>?</p>
+      <div class="test-mc">
+        <label id="q26_opt0"><input type="radio" name="q26" value="0"> winnen</label>
+        <label id="q26_opt1"><input type="radio" name="q26" value="1"> zich bezeren</label>
+        <label id="q26_opt2"><input type="radio" name="q26" value="2"> rusten</label>
+        <label id="q26_opt3"><input type="radio" name="q26" value="3"> sporten</label>
+      </div>
+      <div id="q26-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 27 – Ch.4 Vocabulaire (Ne→Fa)</p>
+      <p class="vraag-tekst">Hoe zeg je "de dokter" in het Frans?</p>
+      <input type="text" class="test-input" id="q27" placeholder="Frans woord">
+      <div id="q27-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 28 – Ch.4 Stelling</p>
+      <p class="vraag-tekst">Beoordeel: <em>"Bij passé composé met être past het deelwoord zich aan het onderwerp aan."</em></p>
+      <div class="stelling-opts">
+        <label><input type="radio" name="q28" value="juist"> Juist</label>
+        <label><input type="radio" name="q28" value="onjuist"> Onjuist</label>
+      </div>
+      <div id="q28-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 29 – Ch.4 Avoir of être?</p>
+      <p class="vraag-tekst">Welke zin is correct?</p>
+      <div class="test-mc">
+        <label id="q29_opt0"><input type="radio" name="q29" value="0"> Il a allé au marché.</label>
+        <label id="q29_opt1"><input type="radio" name="q29" value="1"> Il est allé au marché.</label>
+        <label id="q29_opt2"><input type="radio" name="q29" value="2"> Il est mangé une pomme.</label>
+        <label id="q29_opt3"><input type="radio" name="q29" value="3"> Il a venu chez moi.</label>
+      </div>
+      <div id="q29-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 30 – Ch.4 Mini-dialoog (meerdelig)</p>
+      <p class="vraag-tekst">Zet in de passé composé:</p>
+      <p class="sub-q">a) <em>je (aller) au cinéma</em> (être-werkwoord, mannelijk)</p>
+      <input type="text" class="test-input" id="q30a" placeholder="je suis ...">
+      <div id="q30a-fb" hidden></div>
+      <p class="sub-q">b) <em>nous (voir) un bon film</em> (avoir, deelwoord: vu)</p>
+      <input type="text" class="test-input" id="q30b" placeholder="nous avons ...">
+      <div id="q30b-fb" hidden></div>
+      <p class="sub-q">c) <em>elles (rentrer) tard</em> (être-werkwoord, vrouwelijk meervoud)</p>
+      <input type="text" class="test-input" id="q30c" placeholder="elles sont ...">
+      <div id="q30c-fb" hidden></div>
+    </div>
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Eindresultaat</p>
+        <div class="totaal-box">
+          <div class="totaal-score" id="totaalScore">–</div>
+          <p>van 30 punten</p>
+          <p id="delenScore" style="margin-top:6px;font-size:.9rem"></p>
+        </div>
+        <span id="verdictDisplay" class="result-verdict"></span>
+        <div class="et-actions">
+          <a href="frans.html"><button type="button" class="retry-btn">← Terug naar overzicht</button></a>
+          <button type="button" class="submit-btn" onclick="opnieuw()">↺ Opnieuw beginnen</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="controleer()">Controleer eindtoets</button>
+    </div>
+
+  </div>
+
+  <script>
+    let secs=30*60,timerID;
+    const timerEl=document.getElementById('timer');
+    function tick(){if(secs<=0){clearInterval(timerID);timerEl.textContent='00:00';return;}secs--;timerEl.textContent=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');timerEl.className='et-timer'+(secs<300?' urgent':'');}
+    timerID=setInterval(tick,1000);
+
+    function n(s){return s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();}
+    function fb(id,ok,correct,uitleg,ch){const el=document.getElementById(id);el.hidden=false;el.className=ok?'feedback-goed':'feedback-fout';el.textContent=ok?'['+ch+'] '+uitleg:'['+ch+'] Juist antwoord: '+correct+'. '+uitleg;}
+    function disInp(id,ok){const el=document.getElementById(id);el.disabled=true;el.classList.add(ok?'correct-answer':'wrong-answer');}
+    function gradeMC(name,correct,opts){const sel=document.querySelector(`input[name="${name}"]:checked`);const val=sel?parseInt(sel.value):-1;opts.forEach((id,i)=>{const lbl=document.getElementById(id);if(i===correct)lbl.classList.add('correct-answer');else if(i===val)lbl.classList.add('wrong-answer');lbl.querySelector('input').disabled=true;});return val===correct;}
+    function gradeSt(name){document.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.disabled=true);const sel=document.querySelector(`input[name="${name}"]:checked`);return sel?sel.value:null;}
+
+    function controleer(){
+      clearInterval(timerID);
+      let score=0;
+
+      const v21=n(document.getElementById('q21').value);const ok21=v21==='nous partons'||v21==='partons';if(ok21)score++;disInp('q21',ok21);fb('q21-fb',ok21,'nous partons','Partir → nous partons.','Ch.4');
+      const v22=n(document.getElementById('q22').value);const ok22=v22==='ils sortent'||v22==='sortent';if(ok22)score++;disInp('q22',ok22);fb('q22-fb',ok22,'ils sortent','Sortir → ils sortent.','Ch.4');
+      const ok23=gradeMC('q23',1,['q23_opt0','q23_opt1','q23_opt2','q23_opt3']);if(ok23)score++;fb('q23-fb',ok23,'au','Le stade is mannelijk → à + le = au.','Ch.4');
+      const v24=n(document.getElementById('q24').value);const ok24=v24==='il est alle'||v24==='est alle';if(ok24)score++;disInp('q24',ok24);fb('q24-fb',ok24,'il est allé','Aller + être. Mannelijk: allé. Il est allé.','Ch.4');
+      const v25=n(document.getElementById('q25').value);const ok25=v25==='elle est partie'||v25==='est partie';if(ok25)score++;disInp('q25',ok25);fb('q25-fb',ok25,'elle est partie','Partir + être. Vrouwelijk: partie. Elle est partie.','Ch.4');
+      const ok26=gradeMC('q26',1,['q26_opt0','q26_opt1','q26_opt2','q26_opt3']);if(ok26)score++;fb('q26-fb',ok26,'zich bezeren','Se blesser = zich bezeren.','Ch.4');
+      const v27=n(document.getElementById('q27').value);const ok27=v27==='le medecin'||v27==='medecin';if(ok27)score++;disInp('q27',ok27);fb('q27-fb',ok27,'le médecin','De dokter = le médecin.','Ch.4');
+      const v28=gradeSt('q28');const ok28=v28==='juist';if(ok28)score++;fb('q28-fb',ok28,'Juist','Bij être past het deelwoord zich wel aan (geslacht + getal). Juist.','Ch.4');
+      const ok29=gradeMC('q29',1,['q29_opt0','q29_opt1','q29_opt2','q29_opt3']);if(ok29)score++;fb('q29-fb',ok29,'Il est allé au marché.','Aller gebruikt être als hulpwerkwoord → il est allé.','Ch.4');
+
+      const v30a=n(document.getElementById('q30a').value);const ok30a=v30a==='je suis alle'||v30a==='suis alle';disInp('q30a',ok30a);fb('q30a-fb',ok30a,'je suis allé','Aller + être, mannelijk: allé. Je suis allé.','Ch.4');
+      const v30b=n(document.getElementById('q30b').value);const ok30b=v30b==='nous avons vu'||v30b==='avons vu';disInp('q30b',ok30b);fb('q30b-fb',ok30b,'nous avons vu','Voir → vu (onregelmatig). Nous avons vu.','Ch.4');
+      const v30c=n(document.getElementById('q30c').value);const ok30c=v30c==='elles sont rentrees'||v30c==='sont rentrees';disInp('q30c',ok30c);fb('q30c-fb',ok30c,'elles sont rentrées','Rentrer + être, vrouwelijk meervoud: rentrées. Elles sont rentrées.','Ch.4');
+      if(ok30a&&ok30b&&ok30c)score++;
+
+      const d1=parseInt(localStorage.getItem('fa_d1')||0);
+      const d2=parseInt(localStorage.getItem('fa_d2')||0);
+      const totaal=d1+d2+score;
+      document.getElementById('totaalScore').textContent=totaal;
+      document.getElementById('delenScore').textContent='Deel 1: '+d1+'/10 · Deel 2: '+d2+'/10 · Deel 3: '+score+'/10';
+      const vEl=document.getElementById('verdictDisplay');
+      if(totaal>=27){vEl.textContent='🌟 Uitstekend!';vEl.className='result-verdict verdict-pass';}
+      else if(totaal>=23){vEl.textContent='✓ Goed';vEl.className='result-verdict verdict-voldoende';}
+      else if(totaal>=18){vEl.textContent='✓ Voldoende';vEl.className='result-verdict verdict-voldoende';}
+      else{vEl.textContent='✗ Onvoldoende';vEl.className='result-verdict verdict-fail';}
+      document.getElementById('resultBanner').hidden=false;
+      document.getElementById('resultBanner').scrollIntoView({behavior:'smooth'});
+      document.getElementById('submitBtn').hidden=true;
+    }
+
+    function opnieuw(){localStorage.removeItem('fa_d1');localStorage.removeItem('fa_d2');location.href='fa_eindtoets_1.html';}
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiskunde – Eindtoets H1, H3, H5, H6, H7, H8</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="wiskunde.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🏆</span>
+      <h1>Eindtoets H1, H3, H5, H6, H7, H8</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Resultaat</p>
+        <p class="score-display">Score: <strong id="scoreDisplay">–</strong></p>
+        <span id="verdictDisplay" class="result-verdict"></span>
+      </div>
+    </div>
+
+    <!-- H1 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 1 – H1 Getallen & Bewerkingen</p>
+      <p class="vraag-tekst">Bereken: <span class="math" data-tex="\frac{3}{4} + \frac{1}{2}"></span></p>
+      <input type="text" class="test-input" id="q1" placeholder="antwoord als breuk of decimaal">
+      <div id="q1-fb" hidden></div>
+    </div>
+
+    <!-- H3 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 2 – H3 Verbanden</p>
+      <p class="vraag-tekst">Een lijn heeft de formule <span class="math" data-tex="y = 2x + 3"></span>. Wat is de waarde van <em>y</em> als <span class="math" data-tex="x = 4"></span>?</p>
+      <input type="text" class="test-input" id="q2" placeholder="y = ...">
+      <div id="q2-fb" hidden></div>
+    </div>
+
+    <!-- H6 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 3 – H6 Meetkunde</p>
+      <p class="vraag-tekst">Hoe groot is de hoek die overblijft in een rechthoekige driehoek als één hoek 35° is?</p>
+      <div class="test-mc">
+        <label id="q3_opt0"><input type="radio" name="q3" value="0"> 45°</label>
+        <label id="q3_opt1"><input type="radio" name="q3" value="1"> 55°</label>
+        <label id="q3_opt2"><input type="radio" name="q3" value="2"> 65°</label>
+        <label id="q3_opt3"><input type="radio" name="q3" value="3"> 145°</label>
+      </div>
+      <div id="q3-fb" hidden></div>
+    </div>
+
+    <!-- H5 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 4 – H5 Procenten</p>
+      <p class="vraag-tekst">Van een prijs van €80 wordt 25% korting gegeven. Wat is de nieuwe prijs?</p>
+      <input type="text" class="test-input" id="q4" placeholder="€ ...">
+      <div id="q4-fb" hidden></div>
+    </div>
+
+    <!-- H7 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 5 – H7 Algebra</p>
+      <p class="vraag-tekst">Werk de haakjes uit: <span class="math" data-tex="3(2x + 5)"></span></p>
+      <input type="text" class="test-input" id="q5" placeholder="antwoord">
+      <div id="q5-fb" hidden></div>
+    </div>
+
+    <!-- H8 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 6 – H8 Statistiek</p>
+      <p class="vraag-tekst">Van de cijfers 4, 7, 9, 5, 7, 8: wat is de modus?</p>
+      <input type="text" class="test-input" id="q6" placeholder="modus = ...">
+      <div id="q6-fb" hidden></div>
+    </div>
+
+    <!-- H1 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 7 – H1 Verhoudingen</p>
+      <p class="vraag-tekst">Welke verhouding is gelijk aan 3 : 5?</p>
+      <div class="test-mc">
+        <label id="q7_opt0"><input type="radio" name="q7" value="0"> 6 : 12</label>
+        <label id="q7_opt1"><input type="radio" name="q7" value="1"> 9 : 15</label>
+        <label id="q7_opt2"><input type="radio" name="q7" value="2"> 12 : 15</label>
+        <label id="q7_opt3"><input type="radio" name="q7" value="3"> 6 : 8</label>
+      </div>
+      <div id="q7-fb" hidden></div>
+    </div>
+
+    <!-- H3 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 8 – H3 Verbanden</p>
+      <p class="vraag-tekst">Wat is de richtingscoëfficiënt van de lijn door de punten (0, 1) en (2, 7)?</p>
+      <input type="text" class="test-input" id="q8" placeholder="rc = ...">
+      <div id="q8-fb" hidden></div>
+    </div>
+
+    <!-- H5 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 9 – H5 Procenten</p>
+      <p class="vraag-tekst">Een bedrag groeit met 10% per jaar. Startbedrag €200. Wat is het bedrag na 1 jaar?</p>
+      <input type="text" class="test-input" id="q9" placeholder="€ ...">
+      <div id="q9-fb" hidden></div>
+    </div>
+
+    <!-- H6 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 10 – H6 Pythagoras</p>
+      <p class="vraag-tekst">Bereken de schuine zijde van een rechthoekige driehoek met rechthoekszijden 3 en 4.</p>
+      <input type="text" class="test-input" id="q10" placeholder="c = ...">
+      <div id="q10-fb" hidden></div>
+    </div>
+
+    <!-- H7 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 11 – H7 Vergelijkingen</p>
+      <p class="vraag-tekst">Los op: <span class="math" data-tex="3x - 6 = 9"></span></p>
+      <div class="test-mc">
+        <label id="q11_opt0"><input type="radio" name="q11" value="0"> x = 1</label>
+        <label id="q11_opt1"><input type="radio" name="q11" value="1"> x = 3</label>
+        <label id="q11_opt2"><input type="radio" name="q11" value="2"> x = 5</label>
+        <label id="q11_opt3"><input type="radio" name="q11" value="3"> x = 7</label>
+      </div>
+      <div id="q11-fb" hidden></div>
+    </div>
+
+    <!-- H8 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 12 – H8 Statistiek</p>
+      <p class="vraag-tekst">Van de cijfers 3, 5, 8, 6, 5, 7, 5: wat is het gemiddelde? (rond af op 1 decimaal)</p>
+      <input type="text" class="test-input" id="q12" placeholder="gemiddelde = ...">
+      <div id="q12-fb" hidden></div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="submitToets()">Eindtoets inleveren</button>
+      <button type="button" class="retry-btn" id="resetBtn" onclick="resetToets()" hidden>↺ Opnieuw proberen</button>
+    </div>
+
+  </div>
+
+  <script>
+    const VRAGEN = [
+      { id: 'q1', type: 'open', correct: '5/4', alts: ['1,25','1.25','1 1/4'], antwoord: '5/4 (of 1,25)', hoofdstuk: 'H1',
+        uitleg: '3/4 + 1/2 = 3/4 + 2/4 = 5/4 = 1,25.' },
+      { id: 'q2', type: 'open', correct: '11', antwoord: '11', hoofdstuk: 'H3',
+        uitleg: 'y = 2×4 + 3 = 8 + 3 = 11.' },
+      { id: 'q3', type: 'mc', correct: 1, antwoord: '55°', hoofdstuk: 'H6',
+        uitleg: 'In een rechthoekige driehoek is één hoek 90°. De som van alle hoeken is 180°. 180 − 90 − 35 = 55°.',
+        opts: ['q3_opt0','q3_opt1','q3_opt2','q3_opt3'] },
+      { id: 'q4', type: 'open', correct: '60', alts: ['€60','60 euro'], antwoord: '60', hoofdstuk: 'H5',
+        uitleg: '25% van €80 = €20 korting. €80 − €20 = €60.' },
+      { id: 'q5', type: 'open', correct: '6x+15', alts: ['6x + 15'], antwoord: '6x + 15', hoofdstuk: 'H7',
+        uitleg: '3(2x + 5) = 3·2x + 3·5 = 6x + 15.' },
+      { id: 'q6', type: 'open', correct: '7', antwoord: '7', hoofdstuk: 'H8',
+        uitleg: '7 komt twee keer voor, vaker dan de andere getallen. De modus is 7.' },
+      { id: 'q7', type: 'mc', correct: 1, antwoord: '9 : 15', hoofdstuk: 'H1',
+        uitleg: '3:5 = 9:15 (beide vermenigvuldigd met 3). Vereenvoudigd: 3/5.',
+        opts: ['q7_opt0','q7_opt1','q7_opt2','q7_opt3'] },
+      { id: 'q8', type: 'open', correct: '3', antwoord: '3', hoofdstuk: 'H3',
+        uitleg: 'rc = (7−1) / (2−0) = 6/2 = 3.' },
+      { id: 'q9', type: 'open', correct: '220', alts: ['€220','220 euro'], antwoord: '220', hoofdstuk: 'H5',
+        uitleg: '€200 × 1,10 = €220.' },
+      { id: 'q10', type: 'open', correct: '5', antwoord: '5', hoofdstuk: 'H6',
+        uitleg: 'c² = 3² + 4² = 9 + 16 = 25. c = √25 = 5.' },
+      { id: 'q11', type: 'mc', correct: 2, antwoord: 'x = 5', hoofdstuk: 'H7',
+        uitleg: '3x − 6 = 9 → 3x = 15 → x = 5.',
+        opts: ['q11_opt0','q11_opt1','q11_opt2','q11_opt3'] },
+      { id: 'q12', type: 'open', correct: '5.6', alts: ['5,6'], antwoord: '5,6', hoofdstuk: 'H8',
+        uitleg: 'Som = 3+5+8+6+5+7+5 = 39. Gemiddelde = 39/7 ≈ 5,6.' },
+    ];
+
+    function submitToets() {
+      let score = 0;
+      VRAGEN.forEach(q => {
+        let ok;
+        if (q.type === 'mc') {
+          const sel = document.querySelector(`input[name="${q.id}"]:checked`);
+          const selVal = sel ? parseInt(sel.value) : -1;
+          ok = selVal === q.correct;
+          q.opts.forEach((optId, i) => {
+            const lbl = document.getElementById(optId);
+            if (i === q.correct) lbl.classList.add('correct-answer');
+            else if (i === selVal) lbl.classList.add('wrong-answer');
+            lbl.querySelector('input').disabled = true;
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          const val = inp.value.trim().toLowerCase().replace(/\s/g,'');
+          const correctNorm = q.correct.toLowerCase().replace(/\s/g,'');
+          const altsNorm = (q.alts || []).map(a => a.toLowerCase().replace(/\s/g,''));
+          ok = val === correctNorm || altsNorm.includes(val);
+          inp.disabled = true;
+          inp.classList.add(ok ? 'correct-answer' : 'wrong-answer');
+        }
+        if (ok) score++;
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = false;
+        fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+        const prefix = `[${q.hoofdstuk}] `;
+        fb.textContent = ok ? prefix + q.uitleg : `${prefix}Juist antwoord: ${q.antwoord}. ${q.uitleg}`;
+      });
+
+      document.getElementById('scoreDisplay').textContent = `${score} van 12`;
+      const vEl = document.getElementById('verdictDisplay');
+      if (score >= 11) { vEl.textContent = '🌟 Uitstekend!'; vEl.className = 'result-verdict verdict-pass'; }
+      else if (score >= 8) { vEl.textContent = '✓ Voldoende'; vEl.className = 'result-verdict verdict-voldoende'; }
+      else { vEl.textContent = '✗ Onvoldoende'; vEl.className = 'result-verdict verdict-fail'; }
+      const banner = document.getElementById('resultBanner');
+      banner.hidden = false;
+      banner.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('submitBtn').hidden = true;
+      document.getElementById('resetBtn').hidden = false;
+    }
+
+    function resetToets() {
+      VRAGEN.forEach(q => {
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = true; fb.textContent = '';
+        if (q.type === 'mc') {
+          document.querySelectorAll(`input[name="${q.id}"]`).forEach(r => {
+            r.checked = false; r.disabled = false; r.closest('label').className = '';
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          inp.value = ''; inp.disabled = false; inp.className = 'test-input';
+        }
+      });
+      document.getElementById('resultBanner').hidden = true;
+      document.getElementById('submitBtn').hidden = false;
+      document.getElementById('resetBtn').hidden = true;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.math').forEach(el => {
+        katex.render(el.dataset.tex, el, { throwOnError: false });
+      });
+    });
+  </script>
+
+</body>
+</html>

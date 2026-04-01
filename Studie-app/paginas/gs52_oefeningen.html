@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis §5.2 – Oefeningen</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="geschiedenis.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">✏️</span>
+      <h1>§5.2 – Oefeningen</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div class="kaart">
+      <p class="kaart-titel">Oefeningen – De Reformatie</p>
+
+      <!-- Vraag 1 – open -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>1.</strong> In welk jaar sloeg Luther zijn 95 stellingen aan de kerkdeur?</p>
+        <div class="input-wrap">
+          <input type="text" class="ex-input" id="q1" placeholder="jaar">
+          <button type="button" class="check-btn" onclick="check('q1','1517','Luther sloeg zijn 95 stellingen in 1517 aan de kerkdeur in Wittenberg.')">Controleer</button>
+        </div>
+        <div id="q1-fb" hidden></div>
+      </div>
+
+      <!-- Vraag 2 – meerkeuze -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>2.</strong> Wat waren "aflaten"?</p>
+        <div class="test-mc">
+          <label id="q2_opt0"><input type="radio" name="q2" value="0"> Brieven van de paus aan koningen</label>
+          <label id="q2_opt1"><input type="radio" name="q2" value="1"> Betalingen om zonden kwijt te schelden</label>
+          <label id="q2_opt2"><input type="radio" name="q2" value="2"> Belastingen voor de kruistochten</label>
+          <label id="q2_opt3"><input type="radio" name="q2" value="3"> Geschenken aan de armen</label>
+        </div>
+        <button type="button" class="check-btn" style="margin-top:8px" onclick="checkMC('q2',1,'Aflaten waren betalingen waarmee gelovigen zonden konden afkopen. Dit was een van de grootste grieven van Luther.')">Controleer</button>
+        <div id="q2-fb" hidden></div>
+      </div>
+
+      <!-- Vraag 3 – open + hint -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>3.</strong> Hoe noemde men de volgelingen van Luther?</p>
+        <div class="input-wrap">
+          <input type="text" class="ex-input" id="q3" placeholder="Antwoord">
+          <button type="button" class="check-btn" onclick="check('q3','protestanten','De volgelingen van Luther en andere hervormers werden protestanten genoemd.')">Controleer</button>
+        </div>
+        <div id="q3-fb" hidden></div>
+        <button type="button" class="hint-knop" onclick="toggleHint('h3')">💡 Hint</button>
+        <div class="hint-tekst" id="h3">Ze protesteerden tegen de katholieke kerk.</div>
+      </div>
+
+      <!-- Vraag 4 – meerkeuze + hint -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>4.</strong> Wat was de Contrareformatie?</p>
+        <div class="test-mc">
+          <label id="q4_opt0"><input type="radio" name="q4" value="0"> Een protestantse beweging in Engeland</label>
+          <label id="q4_opt1"><input type="radio" name="q4" value="1"> De reactie van de katholieke kerk op de Reformatie</label>
+          <label id="q4_opt2"><input type="radio" name="q4" value="2"> Een oorlog tussen Luther en de paus</label>
+          <label id="q4_opt3"><input type="radio" name="q4" value="3"> De heruitgave van de 95 stellingen</label>
+        </div>
+        <button type="button" class="check-btn" style="margin-top:8px" onclick="checkMC('q4',1,'De Contrareformatie was de interne hervorming van de katholieke kerk als reactie op het succes van de Reformatie.')">Controleer</button>
+        <div id="q4-fb" hidden></div>
+        <button type="button" class="hint-knop" onclick="toggleHint('h4')">💡 Hint</button>
+        <div class="hint-tekst" id="h4">Contra = tegen. De kerk reageerde op de Reformatie.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function check(id, antwoord, uitleg) {localStorage.setItem("studie_geschiedenis_phase2","done");
+      const input = document.getElementById(id);
+      if (input.disabled) return;
+      const user = input.value.trim().toLowerCase();
+      const ok = user === antwoord.toLowerCase();
+      const fb = document.getElementById(id + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = ok ? uitleg : 'Fout. ' + uitleg;
+      input.disabled = true;
+      const btn = input.nextElementSibling;
+      if (btn) btn.disabled = true;
+    }
+
+    function checkMC(name, correct, uitleg) {
+      const sel = document.querySelector(`input[name="${name}"]:checked`);
+      const selVal = sel ? parseInt(sel.value) : -1;
+      const ok = selVal === correct;
+      for (let i = 0; i < 4; i++) {
+        const lbl = document.getElementById(name + '_opt' + i);
+        if (i === correct) lbl.classList.add('correct-answer');
+        else if (i === selVal) lbl.classList.add('wrong-answer');
+        lbl.querySelector('input').disabled = true;
+      }
+      const fb = document.getElementById(name + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = ok ? uitleg : 'Fout. ' + uitleg;
+      event.target.disabled = true;
+    }
+
+    function toggleHint(id) {
+      document.getElementById(id).classList.toggle('zichtbaar');
+    }
+  </script>
+
+</body>
+</html>

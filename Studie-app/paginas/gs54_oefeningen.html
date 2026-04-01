@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis §5.4 – Oefeningen</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="geschiedenis.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">✏️</span>
+      <h1>§5.4 – Oefeningen</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div class="kaart">
+      <p class="kaart-titel">Oefeningen – De Republiek</p>
+
+      <!-- Vraag 1 – open -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>1.</strong> In welk jaar werd de Unie van Utrecht gesloten?</p>
+        <div class="input-wrap">
+          <input type="text" class="ex-input" id="q1" placeholder="jaar">
+          <button type="button" class="check-btn" onclick="check('q1','1579','De Unie van Utrecht werd in 1579 gesloten: een militair verbond van de noordelijke gewesten tegen Spanje.')">Controleer</button>
+        </div>
+        <div id="q1-fb" hidden></div>
+      </div>
+
+      <!-- Vraag 2 – meerkeuze -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>2.</strong> Wat was de VOC?</p>
+        <div class="test-mc">
+          <label id="q2_opt0"><input type="radio" name="q2" value="0"> Een Spaanse handelsorganisatie</label>
+          <label id="q2_opt1"><input type="radio" name="q2" value="1"> De eerste naamloze vennootschap ter wereld</label>
+          <label id="q2_opt2"><input type="radio" name="q2" value="2"> Een militair verbond van gewesten</label>
+          <label id="q2_opt3"><input type="radio" name="q2" value="3"> Het bestuur van de Republiek</label>
+        </div>
+        <button type="button" class="check-btn" style="margin-top:8px" onclick="checkMC('q2',1,'De VOC (1602) was de Vereenigde Oost-Indische Compagnie, de eerste naamloze vennootschap ter wereld. Ze dreef handel met Azië.')">Controleer</button>
+        <div id="q2-fb" hidden></div>
+      </div>
+
+      <!-- Vraag 3 – open + hint -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>3.</strong> Wie was de leider van de opstand tegen Spanje?</p>
+        <div class="input-wrap">
+          <input type="text" class="ex-input" id="q3" placeholder="naam">
+          <button type="button" class="check-btn" onclick="check('q3','willem van oranje','Willem van Oranje leidde de opstand tegen het Spaanse bewind van Filips II. Hij werd in 1584 vermoord in Delft.')">Controleer</button>
+        </div>
+        <div id="q3-fb" hidden></div>
+        <button type="button" class="hint-knop" onclick="toggleHint('h3')">💡 Hint</button>
+        <div class="hint-tekst" id="h3">Zijn bijnaam was "de Zwijger". Hij was prins van Oranje.</div>
+      </div>
+
+      <!-- Vraag 4 – meerkeuze + hint -->
+      <div class="vraag-wrap">
+        <p class="vraag-tekst"><strong>4.</strong> Waardoor groeide de Republiek uit tot een rijke handelsmacht?</p>
+        <div class="test-mc">
+          <label id="q4_opt0"><input type="radio" name="q4" value="0"> Door verovering van Spanje</label>
+          <label id="q4_opt1"><input type="radio" name="q4" value="1"> Door handel via de VOC en de ligging aan zee</label>
+          <label id="q4_opt2"><input type="radio" name="q4" value="2"> Door het ontdekken van goudmijnen</label>
+          <label id="q4_opt3"><input type="radio" name="q4" value="3"> Door hulp van het Ottomaanse Rijk</label>
+        </div>
+        <button type="button" class="check-btn" style="margin-top:8px" onclick="checkMC('q4',1,'De gunstige ligging aan zee, de VOC-handel met Azië en de relatieve godsdienstvrijheid maakten van de Republiek het handelscentrum van Europa.')">Controleer</button>
+        <div id="q4-fb" hidden></div>
+        <button type="button" class="hint-knop" onclick="toggleHint('h4')">💡 Hint</button>
+        <div class="hint-tekst" id="h4">Denk aan de VOC en Amsterdam als handelsstad.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function check(id, antwoord, uitleg) {localStorage.setItem("studie_geschiedenis_phase2","done");
+      const input = document.getElementById(id);
+      if (input.disabled) return;
+      const user = input.value.trim().toLowerCase();
+      const ok = user === antwoord.toLowerCase();
+      const fb = document.getElementById(id + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = ok ? uitleg : 'Fout. ' + uitleg;
+      input.disabled = true;
+      const btn = input.nextElementSibling;
+      if (btn) btn.disabled = true;
+    }
+
+    function checkMC(name, correct, uitleg) {
+      const sel = document.querySelector(`input[name="${name}"]:checked`);
+      const selVal = sel ? parseInt(sel.value) : -1;
+      const ok = selVal === correct;
+      for (let i = 0; i < 4; i++) {
+        const lbl = document.getElementById(name + '_opt' + i);
+        if (i === correct) lbl.classList.add('correct-answer');
+        else if (i === selVal) lbl.classList.add('wrong-answer');
+        lbl.querySelector('input').disabled = true;
+      }
+      const fb = document.getElementById(name + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = ok ? uitleg : 'Fout. ' + uitleg;
+      event.target.disabled = true;
+    }
+
+    function toggleHint(id) {
+      document.getElementById(id).classList.toggle('zichtbaar');
+    }
+  </script>
+
+</body>
+</html>

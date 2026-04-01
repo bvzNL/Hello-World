@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frans – Eindtoets Chapitre 1 t/m 4</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="frans.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🏆</span>
+      <h1>Eindtoets Chapitre 1 t/m 4</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Resultaat</p>
+        <p class="score-display">Score: <strong id="scoreDisplay">–</strong></p>
+        <span id="verdictDisplay" class="result-verdict"></span>
+      </div>
+    </div>
+
+    <!-- Ch.1 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 1 – Ch.1 Vocabulaire</p>
+      <p class="vraag-tekst">Wat betekent <em>sympa</em>?</p>
+      <div class="test-mc">
+        <label id="q1_opt0"><input type="radio" name="q1" value="0"> vervelend</label>
+        <label id="q1_opt1"><input type="radio" name="q1" value="1"> aardig / leuk</label>
+        <label id="q1_opt2"><input type="radio" name="q1" value="2"> verlegen</label>
+        <label id="q1_opt3"><input type="radio" name="q1" value="3"> snel</label>
+      </div>
+      <div id="q1-fb" hidden></div>
+    </div>
+
+    <!-- Ch.2 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 2 – Ch.2 Kloktijden</p>
+      <p class="vraag-tekst">Hoe zeg je "het is kwart over drie" in het Frans?</p>
+      <input type="text" class="test-input" id="q2" placeholder="il est ...">
+      <div id="q2-fb" hidden></div>
+    </div>
+
+    <!-- Ch.1 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 3 – Ch.1 Werkwoorden</p>
+      <p class="vraag-tekst">Vervoeging: <em>nous (avoir)</em></p>
+      <input type="text" class="test-input" id="q3" placeholder="nous ...">
+      <div id="q3-fb" hidden></div>
+    </div>
+
+    <!-- Ch.3 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 4 – Ch.3 Aanwijzend voornaamwoord</p>
+      <p class="vraag-tekst">Welke vorm past? <em>_____ ami</em> (mannelijk, begint met klinker)</p>
+      <div class="test-mc">
+        <label id="q4_opt0"><input type="radio" name="q4" value="0"> ce</label>
+        <label id="q4_opt1"><input type="radio" name="q4" value="1"> cet</label>
+        <label id="q4_opt2"><input type="radio" name="q4" value="2"> cette</label>
+        <label id="q4_opt3"><input type="radio" name="q4" value="3"> ces</label>
+      </div>
+      <div id="q4-fb" hidden></div>
+    </div>
+
+    <!-- Ch.2 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 5 – Ch.2 Werkwoorden -ir</p>
+      <p class="vraag-tekst">Vervoeging: <em>ils (finir)</em></p>
+      <input type="text" class="test-input" id="q5" placeholder="ils ...">
+      <div id="q5-fb" hidden></div>
+    </div>
+
+    <!-- Ch.4 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 6 – Ch.4 Passé composé être</p>
+      <p class="vraag-tekst">Zet in de passé composé: <em>elle (aller)</em></p>
+      <input type="text" class="test-input" id="q6" placeholder="elle est ...">
+      <div id="q6-fb" hidden></div>
+    </div>
+
+    <!-- Ch.3 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 7 – Ch.3 Passé composé avoir</p>
+      <p class="vraag-tekst">Zet in de passé composé: <em>j' (avoir)</em></p>
+      <div class="test-mc">
+        <label id="q7_opt0"><input type="radio" name="q7" value="0"> j'ai avoir</label>
+        <label id="q7_opt1"><input type="radio" name="q7" value="1"> j'ai eu</label>
+        <label id="q7_opt2"><input type="radio" name="q7" value="2"> j'ai été</label>
+        <label id="q7_opt3"><input type="radio" name="q7" value="3"> j'ai pu</label>
+      </div>
+      <div id="q7-fb" hidden></div>
+    </div>
+
+    <!-- Ch.1 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 8 – Ch.1 Bijvoeglijk naamwoord</p>
+      <p class="vraag-tekst">Maak het bijvoeglijk naamwoord vrouwelijk: <em>petit</em></p>
+      <input type="text" class="test-input" id="q8" placeholder="vrouwelijke vorm">
+      <div id="q8-fb" hidden></div>
+    </div>
+
+    <!-- Ch.4 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 9 – Ch.4 Voorzetsel à</p>
+      <p class="vraag-tekst">Welke vorm past? <em>Je vais _____ hôpital.</em> (l'hôpital)</p>
+      <div class="test-mc">
+        <label id="q9_opt0"><input type="radio" name="q9" value="0"> au</label>
+        <label id="q9_opt1"><input type="radio" name="q9" value="1"> à la</label>
+        <label id="q9_opt2"><input type="radio" name="q9" value="2"> à l'</label>
+        <label id="q9_opt3"><input type="radio" name="q9" value="3"> aux</label>
+      </div>
+      <div id="q9-fb" hidden></div>
+    </div>
+
+    <!-- Ch.2 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 10 – Ch.2 Kloktijden</p>
+      <p class="vraag-tekst">Hoe zeg je "het is half elf" in het Frans?</p>
+      <input type="text" class="test-input" id="q10" placeholder="il est ...">
+      <div id="q10-fb" hidden></div>
+    </div>
+
+    <!-- Ch.3 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 11 – Ch.3 Ontkenning</p>
+      <p class="vraag-tekst">Maak negatief: <em>Tu parles français.</em></p>
+      <input type="text" class="test-input" id="q11" placeholder="ontkenning">
+      <div id="q11-fb" hidden></div>
+    </div>
+
+    <!-- Ch.4 -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 12 – Ch.4 Partir / Sortir</p>
+      <p class="vraag-tekst">Vervoeging: <em>nous (partir)</em></p>
+      <input type="text" class="test-input" id="q12" placeholder="nous ...">
+      <div id="q12-fb" hidden></div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="submitToets()">Eindtoets inleveren</button>
+      <button type="button" class="retry-btn" id="resetBtn" onclick="resetToets()" hidden>↺ Opnieuw proberen</button>
+    </div>
+
+  </div>
+
+  <script>
+    const VRAGEN = [
+      { id: 'q1', type: 'mc', correct: 1, antwoord: 'aardig / leuk', chapitre: 'Ch.1',
+        uitleg: 'Sympa = aardig / leuk.',
+        opts: ['q1_opt0','q1_opt1','q1_opt2','q1_opt3'] },
+      { id: 'q2', type: 'open', correct: 'il est trois heures et quart', antwoord: 'il est trois heures et quart', chapitre: 'Ch.2',
+        uitleg: 'Kwart over drie = il est trois heures et quart.' },
+      { id: 'q3', type: 'open', correct: 'nous avons', antwoord: 'nous avons', chapitre: 'Ch.1',
+        uitleg: 'Avoir → nous avons.' },
+      { id: 'q4', type: 'mc', correct: 1, antwoord: 'cet', chapitre: 'Ch.3',
+        uitleg: 'Ami is mannelijk en begint met een klinker → cet ami.',
+        opts: ['q4_opt0','q4_opt1','q4_opt2','q4_opt3'] },
+      { id: 'q5', type: 'open', correct: 'ils finissent', antwoord: 'ils finissent', chapitre: 'Ch.2',
+        uitleg: 'Finir → ils finissent.' },
+      { id: 'q6', type: 'open', correct: 'elle est allée', antwoord: 'elle est allée', chapitre: 'Ch.4',
+        uitleg: 'Aller → deelwoord: allé. Vrouwelijk: allée. Elle est allée.' },
+      { id: 'q7', type: 'mc', correct: 1, antwoord: "j'ai eu", chapitre: 'Ch.3',
+        uitleg: "Avoir heeft onregelmatig deelwoord: eu. J'ai eu.",
+        opts: ['q7_opt0','q7_opt1','q7_opt2','q7_opt3'] },
+      { id: 'q8', type: 'open', correct: 'petite', antwoord: 'petite', chapitre: 'Ch.1',
+        uitleg: 'Petit (mannelijk) → petite (vrouwelijk).' },
+      { id: 'q9', type: 'mc', correct: 2, antwoord: "à l'", chapitre: 'Ch.4',
+        uitleg: "L'hôpital begint met een klinker (h is stom) → à l'hôpital.",
+        opts: ['q9_opt0','q9_opt1','q9_opt2','q9_opt3'] },
+      { id: 'q10', type: 'open', correct: 'il est dix heures et demie', antwoord: 'il est dix heures et demie', chapitre: 'Ch.2',
+        uitleg: 'Half elf = il est dix heures et demie.' },
+      { id: 'q11', type: 'open', correct: 'tu ne parles pas français', antwoord: 'tu ne parles pas français', chapitre: 'Ch.3',
+        uitleg: 'Tu ne parles pas français. (ne … pas rond het werkwoord)' },
+      { id: 'q12', type: 'open', correct: 'nous partons', antwoord: 'nous partons', chapitre: 'Ch.4',
+        uitleg: 'Partir → nous partons.' },
+    ];
+
+    function submitToets() {
+      let score = 0;
+      VRAGEN.forEach(q => {
+        let ok;
+        if (q.type === 'mc') {
+          const sel = document.querySelector(`input[name="${q.id}"]:checked`);
+          const selVal = sel ? parseInt(sel.value) : -1;
+          ok = selVal === q.correct;
+          q.opts.forEach((optId, i) => {
+            const lbl = document.getElementById(optId);
+            if (i === q.correct) lbl.classList.add('correct-answer');
+            else if (i === selVal) lbl.classList.add('wrong-answer');
+            lbl.querySelector('input').disabled = true;
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          ok = inp.value.trim().toLowerCase() === q.correct.toLowerCase();
+          inp.disabled = true;
+          inp.classList.add(ok ? 'correct-answer' : 'wrong-answer');
+        }
+        if (ok) score++;
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = false;
+        fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+        const prefix = `[${q.chapitre}] `;
+        fb.textContent = ok ? prefix + q.uitleg : `${prefix}Juist antwoord: ${q.antwoord}. ${q.uitleg}`;
+      });
+
+      document.getElementById('scoreDisplay').textContent = `${score} van 12`;
+      const vEl = document.getElementById('verdictDisplay');
+      if (score >= 11) { vEl.textContent = '🌟 Uitstekend!'; vEl.className = 'result-verdict verdict-pass'; }
+      else if (score >= 8) { vEl.textContent = '✓ Voldoende'; vEl.className = 'result-verdict verdict-voldoende'; }
+      else { vEl.textContent = '✗ Onvoldoende'; vEl.className = 'result-verdict verdict-fail'; }
+      const banner = document.getElementById('resultBanner');
+      banner.hidden = false;
+      banner.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('submitBtn').hidden = true;
+      document.getElementById('resetBtn').hidden = false;
+    }
+
+    function resetToets() {
+      VRAGEN.forEach(q => {
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = true; fb.textContent = '';
+        if (q.type === 'mc') {
+          document.querySelectorAll(`input[name="${q.id}"]`).forEach(r => {
+            r.checked = false; r.disabled = false; r.closest('label').className = '';
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          inp.value = ''; inp.disabled = false; inp.className = 'test-input';
+        }
+      });
+      document.getElementById('resultBanner').hidden = true;
+      document.getElementById('submitBtn').hidden = false;
+      document.getElementById('resetBtn').hidden = true;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis Eindtoets – Deel 3</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <style>
+    .et-meta{text-align:center;margin-bottom:8px}.et-sub{font-size:.85rem;color:#888}
+    .et-progress{display:flex;justify-content:center;gap:16px;font-size:1.5rem;margin:6px 0}
+    .et-progress .done{color:#2ec4b6}.et-progress .now{color:#4361ee}
+    .et-timer{text-align:right;font-weight:700;font-size:1.1rem}.et-timer.urgent{color:#e63946}
+    .stelling-opts{display:flex;gap:16px;margin:10px 0}
+    .stelling-opts label{display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer}
+    .sub-q{font-size:.88rem;font-weight:700;color:#4361ee;margin:14px 0 4px}
+    .et-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .totaal-box{background:#f0f4ff;border-radius:10px;padding:16px;margin:10px 0;text-align:center}
+    .totaal-score{font-size:2rem;font-weight:900;color:#4361ee}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="gs_eindtoets_2.html" class="back-btn">← Terug naar Deel 2</a>
+    <div class="topbar-title">
+      <span class="icon">🏛️</span>
+      <h1>Geschiedenis Eindtoets – Deel 3 van 3</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div class="et-meta">
+      <p class="et-sub">§5.4 De Republiek · Vragen 21–30</p>
+      <div class="et-progress">
+        <span class="done">✓</span><span class="done">✓</span><span class="now">●</span>
+      </div>
+      <div class="et-timer" id="timer">30:00</div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 21 – §5.4 Begrip herkennen</p>
+      <p class="vraag-tekst">In welk jaar werd de Unie van Utrecht gesloten?</p>
+      <div class="test-mc">
+        <label id="q21_opt0"><input type="radio" name="q21" value="0"> 1566</label>
+        <label id="q21_opt1"><input type="radio" name="q21" value="1"> 1579</label>
+        <label id="q21_opt2"><input type="radio" name="q21" value="2"> 1588</label>
+        <label id="q21_opt3"><input type="radio" name="q21" value="3"> 1602</label>
+      </div>
+      <div id="q21-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 22 – §5.4 Begrip open</p>
+      <p class="vraag-tekst">Wat was het Plakkaat van Verlatinghe (1581)?</p>
+      <input type="text" class="test-input" id="q22" placeholder="omschrijving">
+      <div id="q22-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 23 – §5.4 Stelling</p>
+      <p class="vraag-tekst">Beoordeel: <em>"De Republiek der Zeven Verenigde Nederlanden was een monarchie."</em></p>
+      <div class="stelling-opts">
+        <label><input type="radio" name="q23" value="juist"> Juist</label>
+        <label><input type="radio" name="q23" value="onjuist"> Onjuist</label>
+      </div>
+      <div id="q23-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 24 – §5.4 Bestuur</p>
+      <p class="vraag-tekst">Welk bestuurlijk orgaan nam in de Republiek de belangrijkste besluiten?</p>
+      <div class="test-mc">
+        <label id="q24_opt0"><input type="radio" name="q24" value="0"> De Raad van State</label>
+        <label id="q24_opt1"><input type="radio" name="q24" value="1"> De Staten-Generaal</label>
+        <label id="q24_opt2"><input type="radio" name="q24" value="2"> De VOC</label>
+        <label id="q24_opt3"><input type="radio" name="q24" value="3"> De stadhouder</label>
+      </div>
+      <div id="q24-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 25 – §5.4 VOC</p>
+      <p class="vraag-tekst">Wat betekent de afkorting VOC?</p>
+      <input type="text" class="test-input" id="q25" placeholder="voluit">
+      <div id="q25-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 26 – §5.4 Stelling</p>
+      <p class="vraag-tekst">Beoordeel: <em>"In de Republiek was er relatief veel godsdienstvrijheid vergeleken met andere Europese landen."</em></p>
+      <div class="stelling-opts">
+        <label><input type="radio" name="q26" value="juist"> Juist</label>
+        <label><input type="radio" name="q26" value="onjuist"> Onjuist</label>
+      </div>
+      <div id="q26-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 27 – §5.4 Gouden Eeuw</p>
+      <p class="vraag-tekst">Wat was een kenmerk van de Gouden Eeuw in de Republiek?</p>
+      <div class="test-mc">
+        <label id="q27_opt0"><input type="radio" name="q27" value="0"> Armoede en isolement</label>
+        <label id="q27_opt1"><input type="radio" name="q27" value="1"> Grote welvaart, bloei van handel, kunst en wetenschap</label>
+        <label id="q27_opt2"><input type="radio" name="q27" value="2"> Religieuze eenheid en streng bestuur</label>
+        <label id="q27_opt3"><input type="radio" name="q27" value="3"> Militaire verovering van geheel Europa</label>
+      </div>
+      <div id="q27-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 28 – §5.4 Persoon</p>
+      <p class="vraag-tekst">Welke rol speelde Willem van Oranje bij het ontstaan van de Republiek?</p>
+      <input type="text" class="test-input" id="q28" placeholder="rol">
+      <div id="q28-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 29 – §5.4 Slotvraag stelling</p>
+      <p class="vraag-tekst">Beoordeel: <em>"De VOC werd opgericht in 1602 en was de eerste naamloze vennootschap ter wereld."</em></p>
+      <div class="stelling-opts">
+        <label><input type="radio" name="q29" value="juist"> Juist</label>
+        <label><input type="radio" name="q29" value="onjuist"> Onjuist</label>
+      </div>
+      <div id="q29-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 30 – §5.1–§5.4 Slotanalyse (meerdelig)</p>
+      <p class="vraag-tekst">Verbind de hoofdstukken met elkaar.</p>
+      <p class="sub-q">a) Welke twee bewegingen legden de basis voor de onafhankelijkheid van de Republiek?</p>
+      <div class="test-mc">
+        <label id="q30a_opt0"><input type="radio" name="q30a" value="0"> Renaissance en Verlichting</label>
+        <label id="q30a_opt1"><input type="radio" name="q30a" value="1"> Reformatie en Europese Expansie</label>
+        <label id="q30a_opt2"><input type="radio" name="q30a" value="2"> Humanisme en de Gouden Eeuw</label>
+        <label id="q30a_opt3"><input type="radio" name="q30a" value="3"> De kruistochten en de Reconquista</label>
+      </div>
+      <div id="q30a-fb" hidden></div>
+      <p class="sub-q">b) Hoe droeg de handel via de VOC bij aan de Gouden Eeuw?</p>
+      <input type="text" class="test-input" id="q30b" placeholder="verklaring">
+      <div id="q30b-fb" hidden></div>
+    </div>
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Eindresultaat</p>
+        <div class="totaal-box">
+          <div class="totaal-score" id="totaalScore">–</div>
+          <p>van 30 punten</p>
+          <p id="delenScore" style="margin-top:6px;font-size:.9rem"></p>
+        </div>
+        <span id="verdictDisplay" class="result-verdict"></span>
+        <div class="et-actions">
+          <a href="geschiedenis.html"><button type="button" class="retry-btn">← Terug naar overzicht</button></a>
+          <button type="button" class="submit-btn" onclick="opnieuw()">↺ Opnieuw beginnen</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="controleer()">Controleer eindtoets</button>
+    </div>
+
+  </div>
+
+  <script>
+    let secs=30*60,timerID;
+    const timerEl=document.getElementById('timer');
+    function tick(){if(secs<=0){clearInterval(timerID);timerEl.textContent='00:00';return;}secs--;timerEl.textContent=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');timerEl.className='et-timer'+(secs<300?' urgent':'');}
+    timerID=setInterval(tick,1000);
+
+    function n(s){return s.trim().toLowerCase();}
+    function fb(id,ok,correct,uitleg,par){const el=document.getElementById(id);el.hidden=false;el.className=ok?'feedback-goed':'feedback-fout';el.textContent=ok?'['+par+'] '+uitleg:'['+par+'] Juist antwoord: '+correct+'. '+uitleg;}
+    function disInp(id,ok){const el=document.getElementById(id);el.disabled=true;el.classList.add(ok?'correct-answer':'wrong-answer');}
+    function gradeMC(name,correct,opts){const sel=document.querySelector(`input[name="${name}"]:checked`);const val=sel?parseInt(sel.value):-1;opts.forEach((id,i)=>{const lbl=document.getElementById(id);if(i===correct)lbl.classList.add('correct-answer');else if(i===val)lbl.classList.add('wrong-answer');lbl.querySelector('input').disabled=true;});return val===correct;}
+    function gradeSt(name){document.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.disabled=true);const sel=document.querySelector(`input[name="${name}"]:checked`);return sel?sel.value:null;}
+
+    function controleer(){
+      clearInterval(timerID);
+      let score=0;
+
+      const ok21=gradeMC('q21',1,['q21_opt0','q21_opt1','q21_opt2','q21_opt3']);if(ok21)score++;fb('q21-fb',ok21,'1579','De Unie van Utrecht werd gesloten in 1579.','§5.4');
+
+      const v22=n(document.getElementById('q22').value);const ok22=v22.includes('onafhankel')||v22.includes('afzwering')||v22.includes('filip')||v22.includes('zelfstandig');if(ok22)score++;disInp('q22',ok22);fb('q22-fb',ok22,'Verklaring van onafhankelijkheid (afzwering Filips II)','Het Plakkaat van Verlatinghe (1581) was de verklaring van onafhankelijkheid waarbij Filips II werd afgezworen.','§5.4');
+
+      const v23=gradeSt('q23');const ok23=v23==='onjuist';if(ok23)score++;fb('q23-fb',ok23,'Onjuist','De Republiek was een republiek (geen monarch), bestuurd door de Staten-Generaal. Onjuist.','§5.4');
+
+      const ok24=gradeMC('q24',1,['q24_opt0','q24_opt1','q24_opt2','q24_opt3']);if(ok24)score++;fb('q24-fb',ok24,'De Staten-Generaal','De Staten-Generaal was het hoogste bestuursorgaan van de Republiek.','§5.4');
+
+      const v25=n(document.getElementById('q25').value);const ok25=v25.includes('vereenigde')&&v25.includes('oost')&&v25.includes('compagnie')||v25==='vereenigde oost-indische compagnie'||v25==='verenigde oost-indische compagnie'||v25.includes('oost-indische compagnie');if(ok25)score++;disInp('q25',ok25);fb('q25-fb',ok25,'Vereenigde Oost-Indische Compagnie','VOC = Vereenigde Oost-Indische Compagnie, opgericht in 1602.','§5.4');
+
+      const v26=gradeSt('q26');const ok26=v26==='juist';if(ok26)score++;fb('q26-fb',ok26,'Juist','De Republiek stond bekend om relatieve godsdienstvrijheid; verschillende geloofsgroepen konden er leven. Juist.','§5.4');
+
+      const ok27=gradeMC('q27',1,['q27_opt0','q27_opt1','q27_opt2','q27_opt3']);if(ok27)score++;fb('q27-fb',ok27,'Grote welvaart, bloei van handel, kunst en wetenschap','De Gouden Eeuw kenmerkte zich door rijkdom via handel en een bloeiende kunst (Rembrandt, Vermeer).','§5.4');
+
+      const v28=n(document.getElementById('q28').value);const ok28=v28.includes('leider')||v28.includes('aanvoer')||v28.includes('opstand')||v28.includes('verzet')||v28.includes('onafhankel')||v28.includes('stadhouder');if(ok28)score++;disInp('q28',ok28);fb('q28-fb',ok28,'Leider van de opstand / stadhouder van Holland','Willem van Oranje leidde de opstand tegen Spanje en was stadhouder van Holland en Zeeland.','§5.4');
+
+      const v29=gradeSt('q29');const ok29=v29==='juist';if(ok29)score++;fb('q29-fb',ok29,'Juist','De VOC werd opgericht in 1602 en geldt als de eerste beursgenoteerde naamloze vennootschap ter wereld. Juist.','§5.4');
+
+      const ok30a=gradeMC('q30a',1,['q30a_opt0','q30a_opt1','q30a_opt2','q30a_opt3']);fb('q30a-fb',ok30a,'Reformatie en Europese Expansie','De Reformatie zorgde voor religieus conflict met Spanje; de Expansie bracht handelsmacht die de Republiek financierde.','§5.1–§5.4');
+      const v30b=n(document.getElementById('q30b').value);const ok30b=v30b.length>15&&(v30b.includes('handel')||v30b.includes('rijkdom')||v30b.includes('winst')||v30b.includes('welvaart'));disInp('q30b',ok30b);fb('q30b-fb',ok30b,'Handelsinkomsten financierden kunst en wetenschap','De VOC bracht enorme rijkdom via de Aziatische handel. Die welvaart maakte de Gouden Eeuw mogelijk.','§5.1–§5.4');
+      if(ok30a&&ok30b)score++;
+
+      const d1=parseInt(localStorage.getItem('gs_d1')||0);
+      const d2=parseInt(localStorage.getItem('gs_d2')||0);
+      const totaal=d1+d2+score;
+      document.getElementById('totaalScore').textContent=totaal;
+      document.getElementById('delenScore').textContent='Deel 1: '+d1+'/10 · Deel 2: '+d2+'/10 · Deel 3: '+score+'/10';
+      const vEl=document.getElementById('verdictDisplay');
+      if(totaal>=27){vEl.textContent='🌟 Uitstekend!';vEl.className='result-verdict verdict-pass';}
+      else if(totaal>=23){vEl.textContent='✓ Goed';vEl.className='result-verdict verdict-voldoende';}
+      else if(totaal>=18){vEl.textContent='✓ Voldoende';vEl.className='result-verdict verdict-voldoende';}
+      else{vEl.textContent='✗ Onvoldoende';vEl.className='result-verdict verdict-fail';}
+      document.getElementById('resultBanner').hidden=false;
+      document.getElementById('resultBanner').scrollIntoView({behavior:'smooth'});
+      document.getElementById('submitBtn').hidden=true;
+    }
+
+    function opnieuw(){localStorage.removeItem('gs_d1');localStorage.removeItem('gs_d2');location.href='gs_eindtoets_1.html';}
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frans – Toets Chapitre 1</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="frans.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">📝</span>
+      <h1>Frans – Toets Chapitre 1</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Resultaat</p>
+        <p class="score-display">Score: <strong id="scoreDisplay">–</strong></p>
+        <span id="verdictDisplay" class="result-verdict"></span>
+      </div>
+    </div>
+
+    <!-- Vraag 1 – Vocabulaire MC -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 1 – Vocabulaire</p>
+      <p class="vraag-tekst">Wat betekent <em>le livre</em>?</p>
+      <div class="test-mc">
+        <label id="q1_opt0"><input type="radio" name="q1" value="0"> de leraar</label>
+        <label id="q1_opt1"><input type="radio" name="q1" value="1"> het huis</label>
+        <label id="q1_opt2"><input type="radio" name="q1" value="2"> het boek</label>
+        <label id="q1_opt3"><input type="radio" name="q1" value="3"> de school</label>
+      </div>
+      <div id="q1-fb" hidden></div>
+    </div>
+
+    <!-- Vraag 2 – Vocabulaire MC -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 2 – Vocabulaire</p>
+      <p class="vraag-tekst">Hoe zeg je "wonen" in het Frans?</p>
+      <div class="test-mc">
+        <label id="q2_opt0"><input type="radio" name="q2" value="0"> travailler</label>
+        <label id="q2_opt1"><input type="radio" name="q2" value="1"> habiter</label>
+        <label id="q2_opt2"><input type="radio" name="q2" value="2"> parler</label>
+        <label id="q2_opt3"><input type="radio" name="q2" value="3"> aller</label>
+      </div>
+      <div id="q2-fb" hidden></div>
+    </div>
+
+    <!-- Vraag 3 – Werkwoord open -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 3 – Werkwoorden</p>
+      <p class="vraag-tekst">Vul in: <em>Elle ___ (être) contente.</em></p>
+      <input type="text" class="test-input" id="q3" placeholder="vervoeging">
+      <div id="q3-fb" hidden></div>
+    </div>
+
+    <!-- Vraag 4 – Werkwoord open -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 4 – Werkwoorden</p>
+      <p class="vraag-tekst">Vul in: <em>Vous ___ (faire) du sport.</em></p>
+      <input type="text" class="test-input" id="q4" placeholder="vervoeging">
+      <div id="q4-fb" hidden></div>
+    </div>
+
+    <!-- Vraag 5 – Grammatica MC -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 5 – Grammatica</p>
+      <p class="vraag-tekst">Welke zin is correct?</p>
+      <div class="test-mc">
+        <label id="q5_opt0"><input type="radio" name="q5" value="0"> une maison grand</label>
+        <label id="q5_opt1"><input type="radio" name="q5" value="1"> une grande maison</label>
+        <label id="q5_opt2"><input type="radio" name="q5" value="2"> une maison grande</label>
+        <label id="q5_opt3"><input type="radio" name="q5" value="3"> un grande maison</label>
+      </div>
+      <div id="q5-fb" hidden></div>
+    </div>
+
+    <!-- Vraag 6 – Grammatica MC -->
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 6 – Grammatica</p>
+      <p class="vraag-tekst">Wat is de vrouwelijke vorm van <em>intéressant</em>?</p>
+      <div class="test-mc">
+        <label id="q6_opt0"><input type="radio" name="q6" value="0"> intéressants</label>
+        <label id="q6_opt1"><input type="radio" name="q6" value="1"> intéressante</label>
+        <label id="q6_opt2"><input type="radio" name="q6" value="2"> intéressant</label>
+        <label id="q6_opt3"><input type="radio" name="q6" value="3"> intéressantes</label>
+      </div>
+      <div id="q6-fb" hidden></div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="submitToets()">Toets inleveren</button>
+      <button type="button" class="retry-btn" id="resetBtn" onclick="resetToets()" hidden>↺ Opnieuw proberen</button>
+    </div>
+
+  </div>
+
+  <script>
+    const VRAGEN = [
+      { id: 'q1', type: 'mc', correct: 2, antwoord: 'het boek',
+        uitleg: 'Le livre = het boek.',
+        opts: ['q1_opt0','q1_opt1','q1_opt2','q1_opt3'] },
+      { id: 'q2', type: 'mc', correct: 1, antwoord: 'habiter',
+        uitleg: 'Habiter = wonen. Travailler = werken, parler = praten.',
+        opts: ['q2_opt0','q2_opt1','q2_opt2','q2_opt3'] },
+      { id: 'q3', type: 'open', correct: 'est', antwoord: 'est',
+        uitleg: 'Elle est → être → il/elle/on est.' },
+      { id: 'q4', type: 'open', correct: 'faites', antwoord: 'faites',
+        uitleg: 'Vous faites → faire → vous faites.' },
+      { id: 'q5', type: 'mc', correct: 1, antwoord: 'une grande maison',
+        uitleg: 'Grand is een uitzondering en staat vóór het zelfstandig naamwoord. Vrouwelijk: grande.',
+        opts: ['q5_opt0','q5_opt1','q5_opt2','q5_opt3'] },
+      { id: 'q6', type: 'mc', correct: 1, antwoord: 'intéressante',
+        uitleg: 'Vrouwelijk: intéressant + e = intéressante.',
+        opts: ['q6_opt0','q6_opt1','q6_opt2','q6_opt3'] },
+    ];
+
+    function submitToets() {localStorage.setItem("studie_frans_phase3","done");
+      let score = 0;
+      VRAGEN.forEach(q => {
+        let ok;
+        if (q.type === 'mc') {
+          const sel = document.querySelector(`input[name="${q.id}"]:checked`);
+          const selVal = sel ? parseInt(sel.value) : -1;
+          ok = selVal === q.correct;
+          q.opts.forEach((optId, i) => {
+            const lbl = document.getElementById(optId);
+            if (i === q.correct) lbl.classList.add('correct-answer');
+            else if (i === selVal) lbl.classList.add('wrong-answer');
+            lbl.querySelector('input').disabled = true;
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          ok = inp.value.trim().toLowerCase() === q.correct.toLowerCase();
+          inp.disabled = true;
+          inp.classList.add(ok ? 'correct-answer' : 'wrong-answer');
+        }
+        if (ok) score++;
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = false;
+        fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+        fb.textContent = ok ? q.uitleg : `Juist antwoord: ${q.antwoord}. ${q.uitleg}`;
+      });
+
+      document.getElementById('scoreDisplay').textContent = `${score} van 6`;
+      const vEl = document.getElementById('verdictDisplay');
+      if (score === 6) {
+        vEl.textContent = '🌟 Uitstekend!';
+        vEl.className = 'result-verdict verdict-pass';
+      } else if (score >= 4) {
+        vEl.textContent = '✓ Voldoende';
+        vEl.className = 'result-verdict verdict-voldoende';
+      } else {
+        vEl.textContent = '✗ Onvoldoende';
+        vEl.className = 'result-verdict verdict-fail';
+      }
+      const banner = document.getElementById('resultBanner');
+      banner.hidden = false;
+      banner.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('submitBtn').hidden = true;
+      document.getElementById('resetBtn').hidden = false;
+    }
+
+    function resetToets() {
+      VRAGEN.forEach(q => {
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = true; fb.textContent = '';
+        if (q.type === 'mc') {
+          document.querySelectorAll(`input[name="${q.id}"]`).forEach(r => {
+            r.checked = false; r.disabled = false;
+            r.closest('label').className = '';
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          inp.value = ''; inp.disabled = false;
+          inp.className = 'test-input';
+        }
+      });
+      document.getElementById('resultBanner').hidden = true;
+      document.getElementById('submitBtn').hidden = false;
+      document.getElementById('resetBtn').hidden = true;
+    }
+  </script>
+
+</body>
+</html>

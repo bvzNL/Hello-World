@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H7 Oefeningen – Wiskunde 2 HV</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body,{delimiters:[
+            {left:'\\(',right:'\\)',display:false},
+            {left:'\\[',right:'\\]',display:true}
+          ]})"></script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="wiskunde.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🔢</span>
+      <h1>Hoofdstuk 7 – Oefeningen</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s71',this)">§7.1</button>
+      <button type="button" class="nav-btn" onclick="toon('s72',this)">§7.2</button>
+      <button type="button" class="nav-btn" onclick="toon('s73',this)">§7.3</button>
+      <button type="button" class="nav-btn" onclick="toon('s74',this)">§7.4</button>
+    </nav>
+
+    <!-- §7.1 Haakjes uitwerken -->
+    <div class="sectie actief" id="s71">
+      <div class="kaart">
+        <p class="kaart-titel">§7.1 – Haakjes uitwerken</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Werk uit: \(4(3x + 2)\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q71a" placeholder="bijv. 12x+8">
+            <button type="button" class="check-btn" onclick="check('q71a','12x+8','4 × 3x + 4 × 2 = 12x + 8.')">Controleer</button>
+          </div>
+          <div id="q71a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Werk uit: \(-3(2x - 5)\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q71b" placeholder="bijv. -6x+15">
+            <button type="button" class="check-btn" onclick="check('q71b','-6x+15','−3 × 2x = −6x; −3 × −5 = +15.')">Controleer</button>
+          </div>
+          <div id="q71b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Werk uit en herleid: \(2(x + 4) + 3(x - 1)\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q71c" placeholder="bijv. 5x+5">
+            <button type="button" class="check-btn" onclick="check('q71c','5x+5','2x + 8 + 3x − 3 = 5x + 5.')">Controleer</button>
+          </div>
+          <div id="q71c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h71c')">💡 Hint</button>
+          <div class="hint-tekst" id="h71c">Werk eerst beide haakjes uit, voeg dan gelijksoortigen samen.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §7.2 Herleiden -->
+    <div class="sectie" id="s72">
+      <div class="kaart">
+        <p class="kaart-titel">§7.2 – Herleiden</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Herleid: \(7x + 3 - 4x + 9\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q72a" placeholder="bijv. 3x+12">
+            <button type="button" class="check-btn" onclick="check('q72a','3x+12','(7x − 4x) + (3 + 9) = 3x + 12.')">Controleer</button>
+          </div>
+          <div id="q72a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Herleid: \(5a + 2b - 3a - 5b\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q72b" placeholder="bijv. 2a-3b">
+            <button type="button" class="check-btn" onclick="check('q72b','2a-3b','(5a − 3a) + (2b − 5b) = 2a − 3b.')">Controleer</button>
+          </div>
+          <div id="q72b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Herleid: \(3(2x + 1) - (4x - 5)\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q72c" placeholder="bijv. 2x+8">
+            <button type="button" class="check-btn" onclick="check('q72c','2x+8','6x + 3 − 4x + 5 = 2x + 8.')">Controleer</button>
+          </div>
+          <div id="q72c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h72c')">💡 Hint</button>
+          <div class="hint-tekst" id="h72c">Let op: \(-(4x - 5) = -4x + 5\). Werk haakjes uit, herleid dan.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §7.3 Vergelijkingen oplossen -->
+    <div class="sectie" id="s73">
+      <div class="kaart">
+        <p class="kaart-titel">§7.3 – Vergelijkingen oplossen</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Los op: \(5x - 3 = 17\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q73a" placeholder="x = ?">
+            <button type="button" class="check-btn" onclick="check('q73a','4','5x = 17 + 3 = 20 → x = 4.')">Controleer</button>
+          </div>
+          <div id="q73a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Los op: \(4x + 7 = 2x + 19\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q73b" placeholder="x = ?">
+            <button type="button" class="check-btn" onclick="check('q73b','6','4x − 2x = 19 − 7 → 2x = 12 → x = 6.')">Controleer</button>
+          </div>
+          <div id="q73b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Los op: \(3(x + 4) = 2(x + 9)\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q73c" placeholder="x = ?">
+            <button type="button" class="check-btn" onclick="check('q73c','6','3x + 12 = 2x + 18 → x = 6.')">Controleer</button>
+          </div>
+          <div id="q73c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h73c')">💡 Hint</button>
+          <div class="hint-tekst" id="h73c">Werk eerst de haakjes uit, breng dan \(x\)-termen naar links en getallen naar rechts.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §7.4 Formules omschrijven -->
+    <div class="sectie" id="s74">
+      <div class="kaart">
+        <p class="kaart-titel">§7.4 – Formules omschrijven</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Schrijf \(y = 2x + 6\) om naar \(x\). Geef de formule als \(x = \ldots\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q74a" placeholder="bijv. (y-6)/2">
+            <button type="button" class="check-btn" onclick="check('q74a','(y-6)/2','y − 6 = 2x → x = (y − 6) / 2.')">Controleer</button>
+          </div>
+          <div id="q74a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Gegeven \(A = l \times b\). Schrijf om naar \(b\). Geef als \(b = \ldots\)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q74b" placeholder="bijv. A/l">
+            <button type="button" class="check-btn" onclick="check('q74b','A/l','b = A ÷ l = A/l.')">Controleer</button>
+          </div>
+          <div id="q74b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Gegeven \(y = 4x - 8\). Bereken \(x\) als \(y = 20\).</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q74c" placeholder="x = ?">
+            <button type="button" class="check-btn" onclick="check('q74c','7','4x = 20 + 8 = 28 → x = 7.')">Controleer</button>
+          </div>
+          <div id="q74c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h74c')">💡 Hint</button>
+          <div class="hint-tekst" id="h74c">Vul \(y = 20\) in en los de vergelijking op naar \(x\).</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+
+    function check(id, antwoord, uitleg) {localStorage.setItem("studie_wiskunde_phase2","done");
+      const input = document.getElementById(id);
+      if (input.disabled) return;
+      const user = input.value.trim().replace(',', '.').replace(/\s/g, '').toLowerCase();
+      const correct = antwoord.trim().replace(',', '.').replace(/\s/g, '').toLowerCase();
+      const ok = user === correct;
+      const fb = document.getElementById(id + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = uitleg;
+      input.disabled = true;
+      const btn = input.nextElementSibling;
+      if (btn) btn.disabled = true;
+    }
+
+    function toggleHint(id) {
+      document.getElementById(id).classList.toggle('zichtbaar');
+    }
+  </script>
+
+</body>
+</html>

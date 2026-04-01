@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis §5.2 – Theorie</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="geschiedenis.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🏛️</span>
+      <h1>§5.2 – De Reformatie</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s1',this)">Oorzaken</button>
+      <button type="button" class="nav-btn" onclick="toon('s2',this)">Maarten Luther</button>
+      <button type="button" class="nav-btn" onclick="toon('s3',this)">Gevolgen</button>
+    </nav>
+
+    <!-- Oorzaken -->
+    <div class="sectie actief" id="s1">
+      <div class="kaart">
+        <p class="kaart-titel">Oorzaken van de Reformatie</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>De <strong>Rooms-Katholieke Kerk</strong> had in de late middeleeuwen veel macht en bezit vergaard. Veel mensen waren ontevreden over misstanden.</li>
+          <li><span class="step-num">2</span><strong>Aflaten</strong>: de kerk verkocht "aflaten" — betalingen waarmee gelovigen zonden konden afkopen. Dit wekte grote verontwaardiging.</li>
+          <li><span class="step-num">3</span>Door de boekdrukkunst konden kritische ideeën nu snel verspreid worden — ook kritiek op de kerk.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Aflatenhandel = betalen om zonden kwijt te schelden.<br>
+          Kerk had te veel macht en rijkdom.<br>
+          Boekdrukkunst versnelde de verspreiding van kritiek.
+        </div>
+      </div>
+    </div>
+
+    <!-- Maarten Luther -->
+    <div class="sectie" id="s2">
+      <div class="kaart">
+        <p class="kaart-titel">Maarten Luther en zijn stellingen</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span><strong>Maarten Luther</strong> (1483–1546), een Duitse monnik, was fel tegen de aflatenhandel. In 1517 spijkerde hij zijn <strong>95 stellingen</strong> aan de kerkdeur in Wittenberg — een lijst met kritiekpunten op de kerk.</li>
+          <li><span class="step-num">2</span>Luther geloofde dat mensen niet door werken of betalingen, maar door <strong>geloof alleen</strong> (sola fide) gered konden worden. Hij baseerde zich uitsluitend op de Bijbel.</li>
+          <li><span class="step-num">3</span>De paus excommuniceerde Luther (zette hem uit de kerk). Toch vonden zijn ideeën veel aanhang. Zijn volgelingen werden <strong>protestanten</strong> genoemd.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          1517: Luther slaat 95 stellingen aan de kerkdeur in Wittenberg.<br>
+          Sola fide: redding door geloof alleen, niet door werken.<br>
+          Volgelingen van Luther = protestanten.
+        </div>
+      </div>
+    </div>
+
+    <!-- Gevolgen -->
+    <div class="sectie" id="s3">
+      <div class="kaart">
+        <p class="kaart-titel">Gevolgen van de Reformatie</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>Europa werd godsdienstig verdeeld: naast de katholieke kerk ontstonden nieuwe <strong>protestantse kerken</strong> (lutheranen, calvinisten, anglicanen).</li>
+          <li><span class="step-num">2</span>De <strong>godsdienstoorlogen</strong>: de religieuze verdeeldheid leidde tot bloedige conflicten, zoals de Tachtigjarige Oorlog in de Nederlanden.</li>
+          <li><span class="step-num">3</span>De katholieke kerk reageerde met de <strong>Contrareformatie</strong>: een interne hervorming om de eigen positie te versterken (bijv. via het jezuïetencollege).</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Europa: katholiek vs. protestants.<br>
+          Godsdienstoorlogen als gevolg van de scheuring.<br>
+          Contrareformatie = reactie van de katholieke kerk.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+  </script>
+
+<script>localStorage.setItem("studie_geschiedenis_phase1","done");</script>
+</body>
+</html>

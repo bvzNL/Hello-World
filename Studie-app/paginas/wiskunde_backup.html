@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiskunde — Jaar 2 HAVO/VWO</title>
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f4f6fb;
+      --surface:   #ffffff;
+      --primary:   #4361ee;
+      --primary-h: #3451d1;
+      --success:   #2ec4b6;
+      --success-bg:#e6faf8;
+      --danger:    #e63946;
+      --danger-bg: #fdecea;
+      --warning:   #ff9f1c;
+      --text:      #1a1a2e;
+      --text-muted:#6b7280;
+      --border:    #e5e7eb;
+      --radius:    14px;
+      --shadow:    0 2px 12px rgba(0,0,0,.08);
+
+      /* Per-topic accent colours */
+      --algebra:    #4361ee;
+      --breuken:    #e63946;
+      --verhouding: #ff9f1c;
+      --meetkunde:  #10b981;
+      --verbanden:  #8b5cf6;
+      --statistiek: #06b6d4;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      color: #fff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: rgba(255,255,255,.8);
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color .15s;
+    }
+    .back-btn:hover { color: #fff; }
+
+    .reset-btn {
+      margin-left: auto;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      color: rgba(255,255,255,.85);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .reset-btn:hover { background: rgba(255,255,255,.28); color: #fff; }
+
+    .topbar-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .topbar-title h1 {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .topbar-title .icon { font-size: 1.4rem; }
+
+    /* ===== PHASE NAV ===== */
+    .phase-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .phase-tab {
+      flex: 1;
+      padding: 14px 8px;
+      text-align: center;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .phase-tab .tab-num {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      opacity: .7;
+    }
+
+    .phase-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .phase-tab.done .tab-check {
+      display: inline;
+      color: var(--success);
+    }
+    .tab-check { display: none; }
+
+    /* ===== PHASE CONTENT WRAPPER ===== */
+    .phase-content {
+      display: none;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px;
+    }
+    .phase-content.active { display: block; }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      margin-bottom: 24px;
+    }
+    .section-header h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: .9rem;
+      margin-top: 6px;
+    }
+
+    /* ===== THEORY CARDS ===== */
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .theory-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .theory-card-header {
+      padding: 14px 18px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .theory-card-header .th-icon { font-size: 1.6rem; }
+    .theory-card-header h3 { font-size: 1rem; font-weight: 700; }
+
+    .theory-card-body {
+      padding: 16px 18px;
+    }
+
+    /* Formula chips */
+    .formula {
+      background: #f0f4ff;
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: 'Courier New', monospace;
+      font-size: .9rem;
+      margin: 8px 0;
+      color: var(--text);
+    }
+
+    .formula.accent { border-left-color: var(--accent, var(--primary)); }
+
+    /* Step list for worked examples */
+    .steps {
+      list-style: none;
+      margin-top: 10px;
+    }
+    .steps li {
+      display: flex;
+      gap: 10px;
+      font-size: .85rem;
+      color: var(--text);
+      margin-bottom: 6px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent, var(--primary));
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .rule-list {
+      list-style: none;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .rule-list li {
+      font-size: .85rem;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+    .rule-list li::before {
+      content: '→';
+      color: var(--accent, var(--primary));
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .tip-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: .82rem;
+      color: #92400e;
+      margin-top: 10px;
+    }
+    .tip-box strong { color: #78350f; }
+
+    /* Topic colour overrides */
+    .algebra    { --accent: var(--algebra); }
+    .breuken    { --accent: var(--breuken); }
+    .verhouding { --accent: var(--verhouding); }
+    .meetkunde  { --accent: var(--meetkunde); }
+    .verbanden  { --accent: var(--verbanden); }
+    .statistiek { --accent: var(--statistiek); }
+
+    .algebra    .formula { background: #eff3ff; border-color: var(--algebra); }
+    .breuken    .formula { background: #fef2f2; border-color: var(--breuken); }
+    .verhouding .formula { background: #fffbeb; border-color: var(--verhouding); }
+    .meetkunde  .formula { background: #ecfdf5; border-color: var(--meetkunde); }
+    .verbanden  .formula { background: #f5f3ff; border-color: var(--verbanden); }
+    .statistiek .formula { background: #ecfeff; border-color: var(--statistiek); }
+
+    /* ===== COMPLETE PHASE BUTTON ===== */
+    .phase-complete-btn {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary), #3a0ca3);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: center;
+      transition: opacity .2s, transform .15s;
+    }
+    .phase-complete-btn:hover { opacity: .9; transform: translateY(-1px); }
+    .phase-complete-btn:disabled {
+      background: var(--border);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ===== EXERCISES (PHASE 2) ===== */
+    .exercise-runner {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .ex-progress-bar {
+      height: 6px;
+      background: var(--border);
+    }
+    .ex-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--success));
+      transition: width .4s ease;
+    }
+
+    .ex-header {
+      padding: 16px 20px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .ex-counter {
+      font-size: .82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .ex-topic-badge {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #eff3ff;
+      color: var(--primary);
+    }
+
+    .ex-body { padding: 24px 20px; }
+
+    .ex-question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    /* MC options */
+    .mc-options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mc-option {
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: .95rem;
+      transition: border-color .15s, background .15s;
+      text-align: left;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .mc-option:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #eff3ff;
+    }
+    .mc-option.selected { border-color: var(--primary); background: #eff3ff; }
+    .mc-option.correct  { border-color: var(--success); background: var(--success-bg); color: #065f46; }
+    .mc-option.wrong    { border-color: var(--danger);  background: var(--danger-bg);  color: #9b1c1c; }
+    .mc-option:disabled { cursor: default; }
+
+    /* Input exercise */
+    .input-wrap {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .ex-input {
+      padding: 11px 14px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      width: 160px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .ex-input:focus { border-color: var(--primary); }
+    .ex-input.correct { border-color: var(--success); background: var(--success-bg); }
+    .ex-input.wrong   { border-color: var(--danger);  background: var(--danger-bg);  }
+
+    .check-btn {
+      padding: 11px 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .check-btn:hover { opacity: .9; }
+    .check-btn:disabled { opacity: .5; cursor: default; }
+
+    /* Feedback box */
+    .feedback-box {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: .9rem;
+      line-height: 1.5;
+      display: none;
+    }
+    .feedback-box.correct {
+      display: block;
+      background: var(--success-bg);
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+    }
+    .feedback-box.wrong {
+      display: block;
+      background: var(--danger-bg);
+      border: 1px solid #fca5a5;
+      color: #7f1d1d;
+    }
+    .feedback-box .fb-icon { font-size: 1.1rem; margin-right: 6px; }
+
+    .ex-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .next-btn {
+      padding: 11px 24px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: opacity .15s, transform .15s;
+      display: none;
+    }
+    .next-btn:hover { opacity: .9; transform: translateY(-1px); }
+    .next-btn.visible { display: block; }
+
+    /* Score summary (end of phase 2) */
+    .score-summary {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .score-summary.visible { display: block; }
+    .score-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-weight: 800;
+    }
+    .score-circle .big-num { font-size: 2.2rem; line-height: 1; }
+    .score-circle .small-label { font-size: .75rem; opacity: .8; }
+    .score-circle.good { background: var(--success-bg); color: #065f46; border: 3px solid var(--success); }
+    .score-circle.ok   { background: #fffbeb;           color: #92400e; border: 3px solid var(--warning); }
+    .score-circle.low  { background: var(--danger-bg);  color: #7f1d1d; border: 3px solid var(--danger); }
+
+    .score-summary h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .score-summary p  { color: var(--text-muted); font-size: .9rem; margin-bottom: 24px; }
+
+    .retry-btn {
+      padding: 11px 24px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: border-color .15s;
+    }
+    .retry-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ===== TEST (PHASE 3) ===== */
+    .test-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .test-q {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .test-q-header {
+      padding: 12px 18px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .test-q-header .q-num {
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+    }
+    .test-q-header .q-topic {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: #eff3ff;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .test-q-body { padding: 18px 18px 14px; }
+    .test-q-text {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    /* MC options inside test */
+    .test-mc { display: grid; gap: 8px; }
+    .test-mc label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .9rem;
+      transition: border-color .15s, background .15s;
+    }
+    .test-mc label:hover { border-color: var(--primary); background: #eff3ff; }
+    .test-mc input[type="radio"] { accent-color: var(--primary); }
+    .test-mc label.correct-answer { border-color: var(--success); background: var(--success-bg); }
+    .test-mc label.wrong-answer   { border-color: var(--danger);  background: var(--danger-bg); }
+
+    /* Input inside test */
+    .test-input {
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 180px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .test-input:focus { border-color: var(--primary); }
+    .test-input.correct-answer { border-color: var(--success); background: var(--success-bg); }
+    .test-input.wrong-answer   { border-color: var(--danger);  background: var(--danger-bg); }
+
+    /* Review block shown after submission */
+    .test-review {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .85rem;
+      line-height: 1.5;
+      display: none;
+    }
+    .test-review.correct { display: block; background: var(--success-bg); color: #065f46; }
+    .test-review.wrong   { display: block; background: var(--danger-bg);  color: #7f1d1d; }
+
+    /* Test action bar */
+    .test-actions {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+    }
+    .submit-btn {
+      padding: 14px 48px;
+      background: linear-gradient(135deg, var(--primary), #3a0ca3);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+    }
+    .submit-btn:hover { opacity: .9; transform: translateY(-1px); }
+    .submit-btn:disabled { background: var(--border); color: var(--text-muted); cursor: default; transform: none; }
+
+    /* Test result banner */
+    .test-result-banner {
+      display: none;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .test-result-banner.visible { display: block; }
+    .test-result-banner .result-emoji { font-size: 3rem; margin-bottom: 10px; }
+    .test-result-banner h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
+    .test-result-banner .result-pct {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin: 8px 0 4px;
+    }
+    .test-result-banner .result-verdict {
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .verdict-pass { background: var(--success-bg); color: #065f46; }
+    .verdict-fail { background: var(--danger-bg);  color: #7f1d1d; }
+    .test-result-banner p.sub { color: var(--text-muted); font-size: .9rem; margin-top: 10px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 520px) {
+      .theory-grid { grid-template-columns: 1fr; }
+      .phase-tab .tab-label { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <a href="../index.html" class="back-btn">← Terug naar start</a>
+    <div class="topbar-title">
+      <span class="icon">📐</span>
+      <h1>Wiskunde — Jaar 2 HAVO/VWO</h1>
+    </div>
+    <button class="reset-btn" onclick="resetProgress()">↺ Reset voortgang</button>
+  </div>
+
+  <!-- ===== PHASE NAVIGATION ===== -->
+  <nav class="phase-nav" id="phaseNav">
+    <div class="phase-tab active" id="tab1" onclick="showPhase(1)">
+      <span class="tab-num">Fase 1</span>
+      <span class="tab-label">Theorie <span class="tab-check" id="check1">✓</span></span>
+    </div>
+    <div class="phase-tab" id="tab2" onclick="showPhase(2)">
+      <span class="tab-num">Fase 2</span>
+      <span class="tab-label">Oefenen <span class="tab-check" id="check2">✓</span></span>
+    </div>
+    <div class="phase-tab" id="tab3" onclick="showPhase(3)">
+      <span class="tab-num">Fase 3</span>
+      <span class="tab-label">Toets <span class="tab-check" id="check3">✓</span></span>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       FASE 1 — KENNISINTRODUCTIE (THEORY)
+  ================================================================ -->
+  <div class="phase-content active" id="phase1">
+    <div class="section-header">
+      <h2>📖 Theorie — wat moet je weten?</h2>
+      <p>Lees de zes onderwerpen door. Gebruik de voorbeelden om de stof te begrijpen. Gebaseerd op <strong>Getal en Ruimte</strong> jaar 2.</p>
+    </div>
+
+    <div class="theory-grid">
+
+      <!-- 1. ALGEBRA -->
+      <div class="theory-card algebra">
+        <div class="theory-card-header" style="background: var(--algebra);">
+          <span class="th-icon">🔢</span>
+          <h3>Algebra & Vergelijkingen</h3>
+        </div>
+        <div class="theory-card-body">
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Vereenvoudigen en vergelijkingen oplossen</p>
+          <div class="formula">Soortgelijke termen samenvoegen:<br>3x + 2x = 5x</div>
+          <div class="formula">Vergelijking oplossen:<br>ax + b = c → x = (c − b) ÷ a</div>
+          <p style="font-size:.82rem;font-weight:700;margin:10px 0 4px;">Voorbeeld: los op 4x − 3 = 13</p>
+          <ol class="steps">
+            <li><span class="step-num">1</span>Voeg 3 toe aan beide kanten: 4x = 16</li>
+            <li><span class="step-num">2</span>Deel beide kanten door 4: x = 4</li>
+          </ol>
+          <div class="tip-box"><strong>Tip:</strong> Altijd dezelfde bewerking aan beide kanten van het =-teken!</div>
+        </div>
+      </div>
+
+      <!-- 2. BREUKEN & PERCENTAGES -->
+      <div class="theory-card breuken">
+        <div class="theory-card-header" style="background: var(--breuken);">
+          <span class="th-icon">🍕</span>
+          <h3>Breuken & Percentages</h3>
+        </div>
+        <div class="theory-card-body">
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Rekenen met breuken en procentrekening</p>
+          <div class="formula">Optellen: gelijke noemers maken<br>¾ + ⅙ = 9/12 + 2/12 = 11/12</div>
+          <div class="formula">Vermenigvuldigen: teller × teller<br>⅔ × ¾ = 6/12 = ½</div>
+          <div class="formula">% berekenen: deel ÷ geheel × 100<br>of: geheel × (p ÷ 100)</div>
+          <ul class="rule-list">
+            <li>20% van 85 = 85 × 0,20 = 17</li>
+            <li>Korting 15%: prijs × 0,85</li>
+            <li>BTW 21% erbij: prijs × 1,21</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. VERHOUDINGEN -->
+      <div class="theory-card verhouding">
+        <div class="theory-card-header" style="background: var(--verhouding);">
+          <span class="th-icon">⚖️</span>
+          <h3>Verhoudingen & Schaal</h3>
+        </div>
+        <div class="theory-card-body">
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Directe evenredigheid en schaal</p>
+          <div class="formula">Verhouding: a : b = c : d<br>→ a × d = b × c (kruisvermenigvuldiging)</div>
+          <div class="formula">Schaal: werkelijke maat = kaartmaat × schaalgetal</div>
+          <p style="font-size:.82rem;font-weight:700;margin:10px 0 4px;">Voorbeeld: schaal 1 : 50 000, 4 cm op de kaart</p>
+          <ol class="steps">
+            <li><span class="step-num">1</span>4 cm × 50 000 = 200 000 cm</li>
+            <li><span class="step-num">2</span>200 000 cm ÷ 100 000 = 2 km</li>
+          </ol>
+          <div class="tip-box"><strong>Tip:</strong> 1 km = 100 000 cm. Zet altijd om naar dezelfde eenheid!</div>
+        </div>
+      </div>
+
+      <!-- 4. MEETKUNDE -->
+      <div class="theory-card meetkunde">
+        <div class="theory-card-header" style="background: var(--meetkunde);">
+          <span class="th-icon">📏</span>
+          <h3>Meetkunde & Pythagoras</h3>
+        </div>
+        <div class="theory-card-body">
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Oppervlakte, omtrek en de stelling van Pythagoras</p>
+          <ul class="rule-list">
+            <li>Rechthoek: O = l × b ; Omtrek = 2(l + b)</li>
+            <li>Driehoek: O = ½ × basis × hoogte</li>
+            <li>Cirkel: O = π × r² ; Omtrek = 2πr</li>
+          </ul>
+          <div class="formula">Pythagoras (rechthoekige driehoek):<br>a² + b² = c²  (c = schuine zijde)</div>
+          <p style="font-size:.82rem;font-weight:700;margin:10px 0 4px;">Voorbeeld: a=3, b=4 → c=?</p>
+          <ol class="steps">
+            <li><span class="step-num">1</span>c² = 3² + 4² = 9 + 16 = 25</li>
+            <li><span class="step-num">2</span>c = √25 = 5</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- 5. LINEAIRE VERBANDEN -->
+      <div class="theory-card verbanden">
+        <div class="theory-card-header" style="background: var(--verbanden);">
+          <span class="th-icon">📈</span>
+          <h3>Lineaire Verbanden</h3>
+        </div>
+        <div class="theory-card-body">
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Rechte lijn en grafieken</p>
+          <div class="formula">y = ax + b<br>a = rico (steilheid) | b = beginwaarde</div>
+          <ul class="rule-list">
+            <li>Rico <strong>a</strong>: hoeveel y stijgt per stap in x</li>
+            <li>Als a > 0: stijgende lijn</li>
+            <li>Als a &lt; 0: dalende lijn</li>
+            <li>Snijpunt met y-as: stel x = 0 in</li>
+            <li>Snijpunt met x-as: stel y = 0 in, los op</li>
+          </ul>
+          <div class="formula">Rico uit twee punten:<br>a = (y₂ − y₁) ÷ (x₂ − x₁)</div>
+          <div class="formula">Voorbeeld: y = 2x + 3<br>x=4 → y = 2(4)+3 = 11</div>
+          <p style="font-size:.82rem;font-weight:700;margin:10px 0 4px;">Voorbeeld snijpunt x-as: y = 4x − 8</p>
+          <ol class="steps">
+            <li><span class="step-num">1</span>Stel y = 0: 0 = 4x − 8</li>
+            <li><span class="step-num">2</span>Los op: 4x = 8 → x = 2</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- 6. STATISTIEK -->
+      <div class="theory-card statistiek">
+        <div class="theory-card-header" style="background: var(--statistiek);">
+          <span class="th-icon">📊</span>
+          <h3>Statistiek</h3>
+        </div>
+        <div class="theory-card-body">
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Gemiddelde, mediaan en modus</p>
+          <div class="formula">Gemiddelde = som van alle waarden ÷ aantal</div>
+          <div class="formula">Mediaan = middelste getal (gesorteerd)<br>Bij even aantal: gemiddelde van de 2 middelsten</div>
+          <div class="formula">Modus = het vaakst voorkomende getal</div>
+          <p style="font-size:.82rem;font-weight:700;margin:10px 0 4px;">Voorbeeld: 3, 7, 2, 8, 5</p>
+          <ol class="steps">
+            <li><span class="step-num">1</span>Gemiddelde: (3+7+2+8+5)÷5 = 25÷5 = 5</li>
+            <li><span class="step-num">2</span>Gesorteerd: 2, 3, 5, 7, 8 → mediaan = 5</li>
+          </ol>
+        </div>
+      </div>
+
+    </div><!-- /theory-grid -->
+
+    <!-- Button to mark phase 1 complete and go to phase 2 -->
+    <button class="phase-complete-btn" id="phase1DoneBtn" onclick="completePhase(1)">
+      Theorie gelezen → naar Oefenen ✓
+    </button>
+  </div><!-- /phase1 -->
+
+
+  <!-- ================================================================
+       FASE 2 — OEFENEN (PRACTICE)
+  ================================================================ -->
+  <div class="phase-content" id="phase2">
+    <div class="section-header">
+      <h2>✏️ Oefenen</h2>
+      <p>20 oefenvragen — alle onderwerpen uit de theorie komen langs. Je krijgt direct te zien of je antwoord goed is, met een korte uitleg.</p>
+    </div>
+
+    <!-- Exercise runner widget -->
+    <div class="exercise-runner" id="exerciseRunner">
+      <div class="ex-progress-bar">
+        <div class="ex-progress-fill" id="exProgressFill" style="width:0%"></div>
+      </div>
+      <div class="ex-header">
+        <span class="ex-counter" id="exCounter">Vraag 1 van 12</span>
+        <span class="ex-topic-badge" id="exTopic">Algebra</span>
+      </div>
+      <div class="ex-body">
+        <p class="ex-question" id="exQuestion">…</p>
+        <div id="exAnswerArea"><!-- MC options or input rendered here --></div>
+        <div class="feedback-box" id="exFeedback"></div>
+      </div>
+      <div class="ex-footer">
+        <button class="next-btn" id="exNextBtn" onclick="nextExercise()">Volgende →</button>
+      </div>
+    </div>
+
+    <!-- Score summary (shown after all exercises done) -->
+    <div class="score-summary" id="scoreSummary">
+      <div class="score-circle" id="scoreCircle">
+        <span class="big-num" id="scoreNum">0/12</span>
+        <span class="small-label">correct</span>
+      </div>
+      <h3 id="scoreTitle">Goed gedaan!</h3>
+      <p id="scoreMsg">Klik hieronder om verder te gaan.</p>
+      <button class="retry-btn" onclick="startExercises()">Opnieuw oefenen</button>
+      <button class="phase-complete-btn" id="phase2DoneBtn"
+              style="display:inline-block;width:auto;padding:11px 28px;margin-top:0;"
+              onclick="completePhase(2)">
+        Verder naar de Toets →
+      </button>
+    </div>
+  </div><!-- /phase2 -->
+
+
+  <!-- ================================================================
+       FASE 3 — TOETS (TEST)
+  ================================================================ -->
+  <div class="phase-content" id="phase3">
+    <div class="section-header">
+      <h2>📝 Toets</h2>
+      <p>12 vragen — beantwoord ze allemaal en klik dan op <strong>Toets inleveren</strong>. Daarna zie je je score en de uitleg bij foute antwoorden. Slagingsgrens: 55%.</p>
+    </div>
+
+    <!-- Result banner (hidden until submitted) -->
+    <div class="test-result-banner" id="testResultBanner">
+      <div class="result-emoji" id="resultEmoji">🎉</div>
+      <h3 id="resultTitle">Toets afgerond!</h3>
+      <div class="result-pct" id="resultPct">0%</div>
+      <span class="result-verdict" id="resultVerdict">Geslaagd</span>
+      <p class="sub" id="resultSub">Je hebt 0 van de 12 vragen goed.</p>
+    </div>
+
+    <!-- Test questions form -->
+    <div class="test-form" id="testForm">
+      <!-- Injected by JS -->
+    </div>
+
+    <div class="test-actions">
+      <button class="submit-btn" id="submitBtn" onclick="submitTest()">
+        Toets inleveren
+      </button>
+    </div>
+
+    <!-- Complete phase button (shown after test) -->
+    <div style="margin-top:20px;text-align:center;display:none;" id="phase3CompleteWrap">
+      <button class="phase-complete-btn"
+              style="display:inline-block;width:auto;padding:13px 32px;"
+              onclick="completePhase(3)">
+        Wiskunde afgerond! ✓
+      </button>
+    </div>
+  </div><!-- /phase3 -->
+
+
+  <!-- ================================================================
+       JAVASCRIPT
+  ================================================================ -->
+  <script>
+    /* ====================================================
+       DATA — EXERCISES (FASE 2)
+       type: 'mc'    → options[] array, correct is index
+       type: 'input' → answer string (trimmed, lowercase match)
+    ==================================================== */
+    const EXERCISES = [
+      // ── ALGEBRA ──────────────────────────────────────────
+      {
+        topic: 'Algebra',
+        type: 'mc',
+        question: 'Los op: 4x − 3 = 13',
+        options: ['x = 3', 'x = 4', 'x = 5', 'x = 16'],
+        correct: 1,
+        explanation: 'Voeg 3 toe aan beide kanten: 4x = 16. Deel daarna door 4: x = 4. ✓'
+      },
+      {
+        topic: 'Algebra',
+        type: 'mc',
+        question: 'Vereenvoudig: 5a + 3b − 2a + b',
+        options: ['3a + 4b', '7a + 4b', '3a + 2b', '7a + 2b'],
+        correct: 0,
+        explanation: 'Soortgelijke termen samennemen: (5a − 2a) = 3a en (3b + b) = 4b. Antwoord: 3a + 4b. ✓'
+      },
+      {
+        topic: 'Algebra',
+        type: 'mc',
+        question: 'Vereenvoudig: 2(3x − 4) + x',
+        options: ['7x − 4', '6x − 8', '7x − 8', '5x − 8'],
+        correct: 2,
+        explanation: 'Eerst haakjes wegwerken: 2 × 3x = 6x en 2 × −4 = −8. Dan 6x − 8 + x = 7x − 8. ✓'
+      },
+
+      // ── BREUKEN ──────────────────────────────────────────
+      {
+        topic: 'Breuken',
+        type: 'mc',
+        question: 'Bereken: ¾ + ⅙',
+        options: ['4/10', '5/6', '11/12', '10/12'],
+        correct: 2,
+        explanation: 'Gelijke noemer 12: 9/12 + 2/12 = 11/12. ✓'
+      },
+      {
+        topic: 'Breuken',
+        type: 'mc',
+        question: 'Bereken: ⅔ × ¾',
+        options: ['5/7', '6/7', '½', '8/6'],
+        correct: 2,
+        explanation: 'Teller × teller, noemer × noemer: (2×3)/(3×4) = 6/12. Vereenvoudigen: 6/12 = ½. ✓'
+      },
+
+      // ── PERCENTAGES ──────────────────────────────────────
+      {
+        topic: 'Percentages',
+        type: 'input',
+        question: 'Bereken 30% van 140. (Geef alleen het getal)',
+        answer: '42',
+        explanation: '140 × 0,30 = 42. Of: 140 ÷ 100 × 30 = 42. ✓'
+      },
+      {
+        topic: 'Percentages',
+        type: 'mc',
+        question: 'Een jas kost €80. Er is 25% korting. Wat betaal je?',
+        options: ['€20', '€55', '€60', '€75'],
+        correct: 2,
+        explanation: 'Korting = 80 × 0,25 = €20. Prijs = 80 − 20 = €60. Of: 80 × 0,75 = €60. ✓'
+      },
+      {
+        topic: 'Percentages',
+        type: 'mc',
+        question: 'Een product kost €100 exclusief BTW. BTW is 21%. Wat betaal je inclusief BTW?',
+        options: ['€110', '€120', '€121', '€201'],
+        correct: 2,
+        explanation: 'BTW erbij: prijs × 1,21 = 100 × 1,21 = €121. ✓'
+      },
+
+      // ── VERHOUDINGEN ─────────────────────────────────────
+      {
+        topic: 'Verhoudingen',
+        type: 'mc',
+        question: 'Kaartschaal 1 : 25 000. Je meet 6 cm op de kaart. Hoe lang is het in werkelijkheid?',
+        options: ['1,5 km', '1,5 m', '150 m', '15 km'],
+        correct: 0,
+        explanation: '6 cm × 25 000 = 150 000 cm. Omrekenen: 150 000 ÷ 100 000 = 1,5 km. ✓'
+      },
+      {
+        topic: 'Verhoudingen',
+        type: 'mc',
+        question: 'De verhouding sap : water is 2 : 5. Je gebruikt 8 dl sap. Hoeveel dl water heb je nodig?',
+        options: ['16 dl', '20 dl', '3,2 dl', '10 dl'],
+        correct: 1,
+        explanation: 'Kruisvermenigvuldiging: 2 : 5 = 8 : x → x = (8 × 5) ÷ 2 = 20 dl. ✓'
+      },
+
+      // ── MEETKUNDE ────────────────────────────────────────
+      {
+        topic: 'Meetkunde',
+        type: 'input',
+        question: 'Rechthoekige driehoek: a = 5 cm, b = 12 cm. Hoe lang is de schuine zijde c? (in cm)',
+        answer: '13',
+        explanation: 'c² = 5² + 12² = 25 + 144 = 169. Dus c = √169 = 13 cm. ✓'
+      },
+      {
+        topic: 'Meetkunde',
+        type: 'mc',
+        question: 'Wat is de oppervlakte van een driehoek met basis 10 cm en hoogte 6 cm?',
+        options: ['60 cm²', '30 cm²', '16 cm²', '120 cm²'],
+        correct: 1,
+        explanation: 'O = ½ × basis × hoogte = ½ × 10 × 6 = 30 cm². ✓'
+      },
+      {
+        topic: 'Meetkunde',
+        type: 'mc',
+        question: 'Bereken de oppervlakte van een cirkel met straal 4 cm. Gebruik π ≈ 3,14. (afgerond op geheel getal)',
+        options: ['25 cm²', '50 cm²', '16 cm²', '201 cm²'],
+        correct: 1,
+        explanation: 'O = π × r² = 3,14 × 4² = 3,14 × 16 = 50,24 ≈ 50 cm². ✓'
+      },
+      {
+        topic: 'Meetkunde',
+        type: 'input',
+        question: 'Een rechthoek heeft lengte 9 cm en breedte 4 cm. Hoe groot is de omtrek? (in cm)',
+        answer: '26',
+        explanation: 'Omtrek = 2 × (l + b) = 2 × (9 + 4) = 2 × 13 = 26 cm. ✓'
+      },
+
+      // ── LINEAIRE VERBANDEN ────────────────────────────────
+      {
+        topic: 'Lineaire verbanden',
+        type: 'input',
+        question: 'Gegeven: y = 3x − 4. Bereken y als x = 5. (Geef alleen het getal)',
+        answer: '11',
+        explanation: 'y = 3 × 5 − 4 = 15 − 4 = 11. ✓'
+      },
+      {
+        topic: 'Lineaire verbanden',
+        type: 'mc',
+        question: 'Wat is de rico van de lijn y = −2x + 7?',
+        options: ['7', '2', '−2', '−7'],
+        correct: 2,
+        explanation: 'In y = ax + b is a de rico. Hier is a = −2. De lijn is dalend. ✓'
+      },
+      {
+        topic: 'Lineaire verbanden',
+        type: 'mc',
+        question: 'Bij welke x snijdt de lijn y = 3x − 6 de x-as?',
+        options: ['x = 6', 'x = 3', 'x = 2', 'x = −2'],
+        correct: 2,
+        explanation: 'Snijpunt x-as: stel y = 0. Dan: 0 = 3x − 6 → 3x = 6 → x = 2. ✓'
+      },
+
+      // ── STATISTIEK ───────────────────────────────────────
+      {
+        topic: 'Statistiek',
+        type: 'input',
+        question: 'Getallen: 4, 9, 3, 6, 8. Wat is het gemiddelde? (Geef alleen het getal)',
+        answer: '6',
+        explanation: 'Som = 4+9+3+6+8 = 30. Gemiddelde = 30 ÷ 5 = 6. ✓'
+      },
+      {
+        topic: 'Statistiek',
+        type: 'mc',
+        question: 'Gesorteerde reeks: 2, 4, 7, 9, 11, 15. Wat is de mediaan?',
+        options: ['7', '8', '9', '7,5'],
+        correct: 1,
+        explanation: 'Even aantal (6): de twee middelsten zijn 7 en 9. Mediaan = (7+9)÷2 = 8. ✓'
+      },
+      {
+        topic: 'Statistiek',
+        type: 'mc',
+        question: 'Gegevens: 3, 7, 3, 9, 3, 5, 8. Wat is de modus?',
+        options: ['5', '3', '7', '9'],
+        correct: 1,
+        explanation: 'De modus is het vaakst voorkomende getal. 3 komt 3× voor. Modus = 3. ✓'
+      },
+    ];
+
+    /* ====================================================
+       DATA — TEST QUESTIONS (FASE 3)
+    ==================================================== */
+    const TEST_QUESTIONS = [
+      {
+        topic: 'Algebra',
+        type: 'mc',
+        question: 'Los op: 3x + 7 = 22',
+        options: ['x = 5', 'x = 7', 'x = 6', 'x = 3'],
+        correct: 0,
+        explanation: '3x = 22 − 7 = 15 → x = 15 ÷ 3 = 5.'
+      },
+      {
+        topic: 'Algebra',
+        type: 'mc',
+        question: 'Vereenvoudig: 2(3x − 4) + x',
+        options: ['7x − 4', '6x − 8', '7x − 8', '5x − 8'],
+        correct: 2,
+        explanation: 'Haakjes wegwerken: 6x − 8 + x = 7x − 8.'
+      },
+      {
+        topic: 'Breuken',
+        type: 'mc',
+        question: 'Bereken: ⅔ × ¾',
+        options: ['5/6', '½', '6/8', '1/2'],
+        correct: 1,
+        explanation: '(2×3)/(3×4) = 6/12 = ½.'
+      },
+      {
+        topic: 'Percentages',
+        type: 'input',
+        question: 'Een fiets kost €240 en wordt 35% duurder. Wat is de nieuwe prijs? (in €, alleen het getal)',
+        answer: '324',
+        explanation: 'Stijging = 240 × 0,35 = 84. Nieuwe prijs = 240 + 84 = €324. (of 240 × 1,35 = 324)'
+      },
+      {
+        topic: 'Percentages',
+        type: 'mc',
+        question: 'Een laptop kost €600 exclusief BTW. BTW is 21%. Wat is de prijs inclusief BTW?',
+        options: ['€621', '€720', '€726', '€660'],
+        correct: 2,
+        explanation: 'Prijs × 1,21 = 600 × 1,21 = €726. ✓'
+      },
+      {
+        topic: 'Verhoudingen',
+        type: 'mc',
+        question: 'De verhouding van appels tot peren is 3 : 5. Er zijn 24 appels. Hoeveel peren zijn er?',
+        options: ['30', '40', '35', '45'],
+        correct: 1,
+        explanation: '3 delen = 24 → 1 deel = 8. Peren = 5 × 8 = 40.'
+      },
+      {
+        topic: 'Meetkunde',
+        type: 'input',
+        question: 'Bereken de oppervlakte van een cirkel met straal 5 cm. Gebruik π ≈ 3,14. (in cm², afgerond op geheel getal)',
+        answer: '79',
+        explanation: 'O = π × r² = 3,14 × 25 = 78,5 ≈ 79 cm².'
+      },
+      {
+        topic: 'Meetkunde',
+        type: 'mc',
+        question: 'Rechthoekige driehoek: c (schuine zijde) = 10 cm, a = 6 cm. Hoe lang is b?',
+        options: ['4 cm', '8 cm', '64 cm', '16 cm'],
+        correct: 1,
+        explanation: 'b² = c² − a² = 100 − 36 = 64 → b = √64 = 8 cm.'
+      },
+      {
+        topic: 'Lineaire verbanden',
+        type: 'mc',
+        question: 'Een lijn loopt door (0, 2) en (3, 8). Wat is de rico?',
+        options: ['2', '3', '6', '4'],
+        correct: 0,
+        explanation: 'Rico = (8−2)÷(3−0) = 6÷3 = 2. De formule is dan y = 2x + 2.'
+      },
+      {
+        topic: 'Lineaire verbanden',
+        type: 'mc',
+        question: 'Bij y = 4x − 8: bij welke x is y = 0? (snijpunt met x-as)',
+        options: ['x = 8', 'x = 2', 'x = −2', 'x = 4'],
+        correct: 1,
+        explanation: 'Stel y = 0: 0 = 4x − 8 → 4x = 8 → x = 2.'
+      },
+      {
+        topic: 'Statistiek',
+        type: 'mc',
+        question: 'Gegevens: 5, 5, 8, 3, 5, 9, 2. Wat is de modus?',
+        options: ['5', '8', '3', '5,29'],
+        correct: 0,
+        explanation: 'De modus is het vaakst voorkomende getal. 5 komt 3× voor. Modus = 5.'
+      },
+      {
+        topic: 'Statistiek',
+        type: 'input',
+        question: 'Gesorteerd: 1, 3, 6, 10, 12, 14. Wat is de mediaan? (alleen het getal)',
+        answer: '8',
+        explanation: 'Even aantal (6): middelsten zijn 6 en 10. Mediaan = (6+10)÷2 = 8.'
+      },
+    ];
+
+    /* ====================================================
+       PHASE MANAGEMENT
+    ==================================================== */
+    const SUBJECT_ID = 'wiskunde';
+
+    function getPhaseStatus(n) {
+      return localStorage.getItem(`studie_${SUBJECT_ID}_phase${n}`) === 'done';
+    }
+
+    function setPhaseStatus(n) {
+      localStorage.setItem(`studie_${SUBJECT_ID}_phase${n}`, 'done');
+    }
+
+    function updateTabDots() {
+      [1, 2, 3].forEach(n => {
+        const tab = document.getElementById(`tab${n}`);
+        const check = document.getElementById(`check${n}`);
+        if (getPhaseStatus(n)) {
+          tab.classList.add('done');
+          check.style.display = 'inline';
+        }
+      });
+    }
+
+    function showPhase(n) {
+      // Update tabs
+      document.querySelectorAll('.phase-tab').forEach((t, i) => {
+        t.classList.toggle('active', i + 1 === n);
+      });
+      // Update content panels
+      document.querySelectorAll('.phase-content').forEach((p, i) => {
+        p.classList.toggle('active', i + 1 === n);
+      });
+
+      // Init exercises when switching to phase 2
+      if (n === 2) {
+        startExercises();
+      }
+
+      // Build test when switching to phase 3
+      if (n === 3) {
+        buildTest();
+      }
+    }
+
+    function completePhase(n) {
+      setPhaseStatus(n);
+      updateTabDots();
+      if (n < 3) {
+        showPhase(n + 1);
+      }
+    }
+
+    /* ====================================================
+       EXERCISE RUNNER (FASE 2)
+    ==================================================== */
+    let exIndex = 0;
+    let exScore = 0;
+    let exAnswered = false;
+
+    function startExercises() {
+      exIndex = 0;
+      exScore = 0;
+      document.getElementById('exerciseRunner').style.display = 'block';
+      document.getElementById('scoreSummary').classList.remove('visible');
+      renderExercise();
+    }
+
+    function renderExercise() {
+      if (exIndex >= EXERCISES.length) {
+        showExerciseSummary();
+        return;
+      }
+
+      exAnswered = false;
+      const ex = EXERCISES[exIndex];
+      const total = EXERCISES.length;
+
+      // Progress
+      document.getElementById('exProgressFill').style.width = (exIndex / total * 100) + '%';
+      document.getElementById('exCounter').textContent = `Vraag ${exIndex + 1} van ${total}`;
+      document.getElementById('exTopic').textContent = ex.topic;
+      document.getElementById('exQuestion').textContent = ex.question;
+
+      // Clear feedback
+      const fb = document.getElementById('exFeedback');
+      fb.className = 'feedback-box';
+      fb.innerHTML = '';
+
+      // Next button hidden
+      const nextBtn = document.getElementById('exNextBtn');
+      nextBtn.classList.remove('visible');
+
+      // Render answer area
+      const area = document.getElementById('exAnswerArea');
+      area.innerHTML = '';
+
+      if (ex.type === 'mc') {
+        const div = document.createElement('div');
+        div.className = 'mc-options';
+        ex.options.forEach((opt, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'mc-option';
+          btn.textContent = opt;
+          btn.onclick = () => checkMC(i);
+          div.appendChild(btn);
+        });
+        area.appendChild(div);
+      } else {
+        // Input type
+        const wrap = document.createElement('div');
+        wrap.className = 'input-wrap';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'ex-input';
+        input.id = 'exInputField';
+        input.placeholder = 'Jouw antwoord';
+        input.addEventListener('keydown', e => { if (e.key === 'Enter') checkInput(); });
+        const btn = document.createElement('button');
+        btn.className = 'check-btn';
+        btn.id = 'checkInputBtn';
+        btn.textContent = 'Controleer';
+        btn.onclick = checkInput;
+        wrap.appendChild(input);
+        wrap.appendChild(btn);
+        area.appendChild(wrap);
+        input.focus();
+      }
+    }
+
+    function checkMC(selectedIndex) {
+      if (exAnswered) return;
+      exAnswered = true;
+
+      const ex = EXERCISES[exIndex];
+      const buttons = document.querySelectorAll('.mc-option');
+
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === ex.correct) btn.classList.add('correct');
+        if (i === selectedIndex && selectedIndex !== ex.correct) btn.classList.add('wrong');
+      });
+
+      const isCorrect = selectedIndex === ex.correct;
+      if (isCorrect) exScore++;
+      showFeedback(isCorrect, ex.explanation);
+    }
+
+    function checkInput() {
+      if (exAnswered) return;
+      const input = document.getElementById('exInputField');
+      const btn = document.getElementById('checkInputBtn');
+      if (!input) return;
+
+      const userAns = input.value.trim().replace(',', '.');
+      const correctAns = EXERCISES[exIndex].answer.trim().replace(',', '.');
+      const isCorrect = userAns === correctAns;
+
+      if (isCorrect) {
+        exScore++;
+        input.classList.add('correct');
+      } else {
+        input.classList.add('wrong');
+      }
+
+      input.disabled = true;
+      btn.disabled = true;
+      exAnswered = true;
+      showFeedback(isCorrect, EXERCISES[exIndex].explanation);
+    }
+
+    function showFeedback(isCorrect, explanation) {
+      const fb = document.getElementById('exFeedback');
+      fb.className = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+      fb.innerHTML = `<span class="fb-icon">${isCorrect ? '✅' : '❌'}</span> ${explanation}`;
+
+      document.getElementById('exNextBtn').classList.add('visible');
+    }
+
+    function nextExercise() {
+      exIndex++;
+      renderExercise();
+    }
+
+    function showExerciseSummary() {
+      document.getElementById('exerciseRunner').style.display = 'none';
+      const summary = document.getElementById('scoreSummary');
+      summary.classList.add('visible');
+
+      const total = EXERCISES.length;
+      const pct = Math.round(exScore / total * 100);
+      const circle = document.getElementById('scoreCircle');
+
+      document.getElementById('scoreNum').textContent = `${exScore}/${total}`;
+
+      circle.className = 'score-circle ' + (pct >= 75 ? 'good' : pct >= 50 ? 'ok' : 'low');
+
+      if (pct >= 75) {
+        document.getElementById('scoreTitle').textContent = 'Super goed gedaan! 🎉';
+        document.getElementById('scoreMsg').textContent = 'Je beheerst de stof goed. Klaar voor de toets?';
+      } else if (pct >= 50) {
+        document.getElementById('scoreTitle').textContent = 'Goed bezig! 👍';
+        document.getElementById('scoreMsg').textContent = 'Je snapt het voor een groot deel. Wil je nog een keer oefenen?';
+      } else {
+        document.getElementById('scoreTitle').textContent = 'Nog even doorzetten 💪';
+        document.getElementById('scoreMsg').textContent = 'Herhaal de theorie en probeer opnieuw. Dat lukt jou!';
+      }
+    }
+
+    /* ====================================================
+       TEST BUILDER & GRADER (FASE 3)
+    ==================================================== */
+    let testSubmitted = false;
+
+    function buildTest() {
+      if (testSubmitted) return; // Don't rebuild after submission
+
+      const form = document.getElementById('testForm');
+      form.innerHTML = '';
+
+      TEST_QUESTIONS.forEach((q, i) => {
+        const card = document.createElement('div');
+        card.className = 'test-q';
+        card.id = `tq${i}`;
+
+        card.innerHTML = `
+          <div class="test-q-header">
+            <span class="q-num">Vraag ${i + 1}</span>
+            <span class="q-topic">${q.topic}</span>
+          </div>
+          <div class="test-q-body">
+            <p class="test-q-text">${q.question}</p>
+            ${buildTestAnswer(q, i)}
+            <div class="test-review" id="review${i}"></div>
+          </div>
+        `;
+        form.appendChild(card);
+      });
+    }
+
+    function buildTestAnswer(q, idx) {
+      if (q.type === 'mc') {
+        const opts = q.options.map((opt, i) => `
+          <label id="tlabel${idx}_${i}">
+            <input type="radio" name="tq${idx}" value="${i}" /> ${opt}
+          </label>
+        `).join('');
+        return `<div class="test-mc">${opts}</div>`;
+      } else {
+        return `<input type="text" class="test-input" id="tinput${idx}" placeholder="Jouw antwoord" />`;
+      }
+    }
+
+    function submitTest() {
+      if (testSubmitted) return;
+
+      let score = 0;
+
+      TEST_QUESTIONS.forEach((q, i) => {
+        let isCorrect = false;
+
+        if (q.type === 'mc') {
+          const selected = document.querySelector(`input[name="tq${i}"]:checked`);
+          const selectedVal = selected ? parseInt(selected.value) : -1;
+          isCorrect = selectedVal === q.correct;
+
+          // Colour all options
+          q.options.forEach((_, oi) => {
+            const lbl = document.getElementById(`tlabel${i}_${oi}`);
+            if (lbl) {
+              if (oi === q.correct) lbl.classList.add('correct-answer');
+              else if (oi === selectedVal) lbl.classList.add('wrong-answer');
+            }
+          });
+          // Disable radios
+          document.querySelectorAll(`input[name="tq${i}"]`).forEach(r => r.disabled = true);
+
+        } else {
+          const inputEl = document.getElementById(`tinput${i}`);
+          if (inputEl) {
+            const userAns = inputEl.value.trim().replace(',', '.');
+            const correctAns = q.answer.trim().replace(',', '.');
+            isCorrect = userAns === correctAns;
+            inputEl.disabled = true;
+            inputEl.classList.add(isCorrect ? 'correct-answer' : 'wrong-answer');
+          }
+        }
+
+        if (isCorrect) score++;
+
+        // Show review
+        const review = document.getElementById(`review${i}`);
+        if (review) {
+          if (isCorrect) {
+            review.className = 'test-review correct';
+            review.innerHTML = '✅ Correct!';
+          } else {
+            review.className = 'test-review wrong';
+            review.innerHTML = `❌ Fout — ${q.explanation}`;
+          }
+        }
+      });
+
+      testSubmitted = true;
+      document.getElementById('submitBtn').disabled = true;
+
+      // Show result banner
+      const total = TEST_QUESTIONS.length;
+      const pct = Math.round(score / total * 100);
+      const pass = pct >= 55;
+
+      const banner = document.getElementById('testResultBanner');
+      banner.classList.add('visible');
+      document.getElementById('resultEmoji').textContent = pass ? '🎉' : '📚';
+      document.getElementById('resultTitle').textContent = pass ? 'Gefeliciteerd, je bent geslaagd!' : 'Nog niet genoeg — blijf oefenen!';
+      document.getElementById('resultPct').textContent = pct + '%';
+      document.getElementById('resultPct').style.color = pass ? 'var(--success)' : 'var(--danger)';
+
+      const verdict = document.getElementById('resultVerdict');
+      verdict.textContent = pass ? '✓ Geslaagd (≥ 55%)' : '✗ Niet geslaagd (< 55%)';
+      verdict.className = 'result-verdict ' + (pass ? 'verdict-pass' : 'verdict-fail');
+
+      document.getElementById('resultSub').textContent = `Je hebt ${score} van de ${total} vragen goed beantwoord.`;
+
+      // Scroll to top of phase
+      banner.scrollIntoView({ behavior: 'smooth' });
+
+      // Show complete button if passed
+      if (pass) {
+        document.getElementById('phase3CompleteWrap').style.display = 'block';
+      }
+    }
+
+    /* ====================================================
+       RESET PROGRESS
+    ==================================================== */
+    function resetProgress() {
+      if (!confirm('Weet je zeker dat je de voortgang voor Wiskunde wilt wissen?')) return;
+      [1, 2, 3].forEach(n => localStorage.removeItem(`studie_${SUBJECT_ID}_phase${n}`));
+      testSubmitted = false;
+      updateTabDots();
+      showPhase(1);
+    }
+
+    /* ====================================================
+       INIT
+    ==================================================== */
+    updateTabDots();
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis §5.1 – Theorie</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="geschiedenis.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🏛️</span>
+      <h1>§5.1 – De Renaissance</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s1',this)">Achtergrond</button>
+      <button type="button" class="nav-btn" onclick="toon('s2',this)">Kenmerken</button>
+      <button type="button" class="nav-btn" onclick="toon('s3',this)">Gevolgen</button>
+    </nav>
+
+    <!-- Achtergrond -->
+    <div class="sectie actief" id="s1">
+      <div class="kaart">
+        <p class="kaart-titel">Achtergrond van de Renaissance</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>De <strong>Renaissance</strong> (Frans voor "wedergeboorte") begon in de 14e–15e eeuw in Italië en verspreidde zich daarna over heel Europa.</li>
+          <li><span class="step-num">2</span>Geleerden en kunstenaars lieten zich opnieuw inspireren door de cultuur van het oude Griekenland en Rome.</li>
+          <li><span class="step-num">3</span>De opkomst van de <strong>boekdrukkunst</strong> (Johannes Gutenberg, ±1450) zorgde ervoor dat kennis en ideeën snel verspreid konden worden.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Renaissance = wedergeboorte van de klassieke oudheid.<br>
+          Begon in Italië, verspreidde zich naar heel Europa.<br>
+          Boekdrukkunst (ca. 1450) versnelde de verspreiding van ideeën.
+        </div>
+      </div>
+    </div>
+
+    <!-- Kenmerken -->
+    <div class="sectie" id="s2">
+      <div class="kaart">
+        <p class="kaart-titel">Kenmerken van de Renaissance</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span><strong>Humanisme</strong>: de mens staat centraal. Denkers geloofden dat de mens door onderwijs en rede het leven kon verbeteren.</li>
+          <li><span class="step-num">2</span><strong>Nieuwe kunst</strong>: schilders en beeldhouwers bestudeerden het menselijk lichaam en schilderden realistischer. Bekende kunstenaars: Leonardo da Vinci en Michelangelo.</li>
+          <li><span class="step-num">3</span><strong>Wetenschap</strong>: geleerden gingen de natuur bestuderen door observatie en experimenten in plaats van alles op gezag van de kerk te geloven.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Humanisme: de mens staat centraal (niet alleen God).<br>
+          Kunst werd realistischer: perspectief en anatomie.<br>
+          Wetenschappers: Copernicus (aarde draait om de zon).
+        </div>
+      </div>
+    </div>
+
+    <!-- Gevolgen -->
+    <div class="sectie" id="s3">
+      <div class="kaart">
+        <p class="kaart-titel">Gevolgen van de Renaissance</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span>De Renaissance leidde tot meer <strong>kritisch denken</strong>: mensen stelden vaker vragen bij de macht van de kerk en de traditie.</li>
+          <li><span class="step-num">2</span>Dit kritische denken bereidde de weg voor de <strong>Reformatie</strong> (§5.2): de kerkhervorming van Maarten Luther.</li>
+          <li><span class="step-num">3</span>De nieuwe denkwijze stimuleerde ook de <strong>Europese expansie</strong>: zeelieden gingen de wereld verkennen met behulp van betere wetenschap en techniek.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Kritisch denken → minder blind vertrouwen in de kerk.<br>
+          Renaissance → bereidt de Reformatie voor.<br>
+          Betere wetenschap → Europese expansie mogelijk.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+  </script>
+
+<script>localStorage.setItem("studie_geschiedenis_phase1","done");</script>
+</body>
+</html>

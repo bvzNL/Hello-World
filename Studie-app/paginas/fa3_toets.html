@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frans – Toets Chapitre 3</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="frans.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">📝</span>
+      <h1>Toets Chapitre 3</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Resultaat</p>
+        <p class="score-display">Score: <strong id="scoreDisplay">–</strong></p>
+        <span id="verdictDisplay" class="result-verdict"></span>
+      </div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 1 – Vocabulaire</p>
+      <p class="vraag-tekst">Wat betekent <em>les soldes</em>?</p>
+      <div class="test-mc">
+        <label id="q1_opt0"><input type="radio" name="q1" value="0"> De schoenen</label>
+        <label id="q1_opt1"><input type="radio" name="q1" value="1"> De uitverkoop</label>
+        <label id="q1_opt2"><input type="radio" name="q1" value="2"> De kleding</label>
+        <label id="q1_opt3"><input type="radio" name="q1" value="3"> De rekening</label>
+      </div>
+      <div id="q1-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 2 – Vocabulaire</p>
+      <p class="vraag-tekst">Welk Frans woord betekent "duur"?</p>
+      <div class="test-mc">
+        <label id="q2_opt0"><input type="radio" name="q2" value="0"> bon marché</label>
+        <label id="q2_opt1"><input type="radio" name="q2" value="1"> gratuit</label>
+        <label id="q2_opt2"><input type="radio" name="q2" value="2"> cher</label>
+        <label id="q2_opt3"><input type="radio" name="q2" value="3"> joli</label>
+      </div>
+      <div id="q2-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 3 – Aanwijzend voornaamwoord</p>
+      <p class="vraag-tekst">Welke vorm past? <em>_____ pantalon</em> (mannelijk, begint met medeklinker)</p>
+      <div class="test-mc">
+        <label id="q3_opt0"><input type="radio" name="q3" value="0"> cette</label>
+        <label id="q3_opt1"><input type="radio" name="q3" value="1"> cet</label>
+        <label id="q3_opt2"><input type="radio" name="q3" value="2"> ce</label>
+        <label id="q3_opt3"><input type="radio" name="q3" value="3"> ces</label>
+      </div>
+      <div id="q3-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 4 – Aanwijzend voornaamwoord</p>
+      <p class="vraag-tekst">Welke vorm past? <em>_____ chaussures</em> (meervoud)</p>
+      <div class="test-mc">
+        <label id="q4_opt0"><input type="radio" name="q4" value="0"> ce</label>
+        <label id="q4_opt1"><input type="radio" name="q4" value="1"> cette</label>
+        <label id="q4_opt2"><input type="radio" name="q4" value="2"> cet</label>
+        <label id="q4_opt3"><input type="radio" name="q4" value="3"> ces</label>
+      </div>
+      <div id="q4-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 5 – Ontkenning</p>
+      <p class="vraag-tekst">Maak negatief: <em>Je porte un chapeau.</em></p>
+      <input type="text" class="test-input" id="q5" placeholder="ontkenning">
+      <div id="q5-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 6 – Ontkenning</p>
+      <p class="vraag-tekst">Maak negatief: <em>Il aime cette veste.</em></p>
+      <input type="text" class="test-input" id="q6" placeholder="ontkenning">
+      <div id="q6-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 7 – Passé composé</p>
+      <p class="vraag-tekst">Zet in de passé composé: <em>tu (finir)</em></p>
+      <input type="text" class="test-input" id="q7" placeholder="tu as ...">
+      <div id="q7-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 8 – Passé composé</p>
+      <p class="vraag-tekst">Zet in de passé composé: <em>vous (vouloir)</em></p>
+      <input type="text" class="test-input" id="q8" placeholder="vous avez ...">
+      <div id="q8-fb" hidden></div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="submitToets()">Toets inleveren</button>
+      <button type="button" class="retry-btn" id="resetBtn" onclick="resetToets()" hidden>↺ Opnieuw proberen</button>
+    </div>
+
+  </div>
+
+  <script>
+    const VRAGEN = [
+      { id: 'q1', type: 'mc', correct: 1, antwoord: 'De uitverkoop',
+        uitleg: 'Les soldes = de uitverkoop.',
+        opts: ['q1_opt0','q1_opt1','q1_opt2','q1_opt3'] },
+      { id: 'q2', type: 'mc', correct: 2, antwoord: 'cher',
+        uitleg: 'Cher betekent "duur". Bon marché = goedkoop.',
+        opts: ['q2_opt0','q2_opt1','q2_opt2','q2_opt3'] },
+      { id: 'q3', type: 'mc', correct: 2, antwoord: 'ce',
+        uitleg: 'Pantalon is mannelijk enkelvoud, begint met medeklinker → ce pantalon.',
+        opts: ['q3_opt0','q3_opt1','q3_opt2','q3_opt3'] },
+      { id: 'q4', type: 'mc', correct: 3, antwoord: 'ces',
+        uitleg: 'Chaussures is meervoud → ces chaussures.',
+        opts: ['q4_opt0','q4_opt1','q4_opt2','q4_opt3'] },
+      { id: 'q5', type: 'open', correct: 'je ne porte pas de chapeau', antwoord: 'Je ne porte pas de chapeau.',
+        uitleg: 'Je ne porte pas de chapeau. (un → de na ontkenning)' },
+      { id: 'q6', type: 'open', correct: "il n'aime pas cette veste", antwoord: "Il n'aime pas cette veste.",
+        uitleg: "Il n'aime pas cette veste. (n' voor klinker)" },
+      { id: 'q7', type: 'open', correct: 'tu as fini', antwoord: 'tu as fini',
+        uitleg: 'Finir is een -ir werkwoord → deelwoord: fini. Tu as fini.' },
+      { id: 'q8', type: 'open', correct: 'vous avez voulu', antwoord: 'vous avez voulu',
+        uitleg: 'Vouloir heeft onregelmatig deelwoord: voulu. Vous avez voulu.' },
+    ];
+
+    function submitToets() {localStorage.setItem("studie_frans_phase3","done");
+      let score = 0;
+      VRAGEN.forEach(q => {
+        let ok;
+        if (q.type === 'mc') {
+          const sel = document.querySelector(`input[name="${q.id}"]:checked`);
+          const selVal = sel ? parseInt(sel.value) : -1;
+          ok = selVal === q.correct;
+          q.opts.forEach((optId, i) => {
+            const lbl = document.getElementById(optId);
+            if (i === q.correct) lbl.classList.add('correct-answer');
+            else if (i === selVal) lbl.classList.add('wrong-answer');
+            lbl.querySelector('input').disabled = true;
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          ok = inp.value.trim().toLowerCase() === q.correct.toLowerCase();
+          inp.disabled = true;
+          inp.classList.add(ok ? 'correct-answer' : 'wrong-answer');
+        }
+        if (ok) score++;
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = false;
+        fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+        fb.textContent = ok ? q.uitleg : `Juist antwoord: ${q.antwoord}. ${q.uitleg}`;
+      });
+
+      document.getElementById('scoreDisplay').textContent = `${score} van 8`;
+      const vEl = document.getElementById('verdictDisplay');
+      if (score === 8) { vEl.textContent = '🌟 Uitstekend!'; vEl.className = 'result-verdict verdict-pass'; }
+      else if (score >= 6) { vEl.textContent = '✓ Voldoende'; vEl.className = 'result-verdict verdict-voldoende'; }
+      else { vEl.textContent = '✗ Onvoldoende'; vEl.className = 'result-verdict verdict-fail'; }
+      const banner = document.getElementById('resultBanner');
+      banner.hidden = false;
+      banner.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('submitBtn').hidden = true;
+      document.getElementById('resetBtn').hidden = false;
+    }
+
+    function resetToets() {
+      VRAGEN.forEach(q => {
+        const fb = document.getElementById(q.id + '-fb');
+        fb.hidden = true; fb.textContent = '';
+        if (q.type === 'mc') {
+          document.querySelectorAll(`input[name="${q.id}"]`).forEach(r => {
+            r.checked = false; r.disabled = false; r.closest('label').className = '';
+          });
+        } else {
+          const inp = document.getElementById(q.id);
+          inp.value = ''; inp.disabled = false; inp.className = 'test-input';
+        }
+      });
+      document.getElementById('resultBanner').hidden = true;
+      document.getElementById('submitBtn').hidden = false;
+      document.getElementById('resetBtn').hidden = true;
+    }
+  </script>
+
+</body>
+</html>

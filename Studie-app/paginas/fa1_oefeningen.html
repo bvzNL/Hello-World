@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frans – Oefeningen Chapitre 1</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="frans.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">✏️</span>
+      <h1>Chapitre 1 – Oefeningen</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s1',this)">Vocabulaire</button>
+      <button type="button" class="nav-btn" onclick="toon('s2',this)">Werkwoorden</button>
+      <button type="button" class="nav-btn" onclick="toon('s3',this)">Grammatica</button>
+    </nav>
+
+    <!-- Vocabulaire -->
+    <div class="sectie actief" id="s1">
+      <div class="kaart">
+        <p class="kaart-titel">Vocabulaire</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Wat betekent <em>la maison</em> in het Nederlands?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q1a" placeholder="Nederlands">
+            <button type="button" class="check-btn" onclick="check('q1a','het huis','La maison = het huis.')">Controleer</button>
+          </div>
+          <div id="q1a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Hoe zeg je "de school" in het Frans?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q1b" placeholder="Frans">
+            <button type="button" class="check-btn" onclick="check('q1b',"l'école","De school = l'école (vrouwelijk, begint met klinker).")">Controleer</button>
+          </div>
+          <div id="q1b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Wat betekent <em>travailler</em>?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q1c" placeholder="Nederlands">
+            <button type="button" class="check-btn" onclick="check('q1c','werken','Travailler = werken.')">Controleer</button>
+          </div>
+          <div id="q1c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h1c')">💡 Hint</button>
+          <div class="hint-tekst" id="h1c">Denk aan het Engelse "travail" (vroeger: moeizame arbeid).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Werkwoorden -->
+    <div class="sectie" id="s2">
+      <div class="kaart">
+        <p class="kaart-titel">Werkwoorden – présent</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Vul in: <em>Tu ___ (avoir) faim.</em> (Jij hebt honger.)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q2a" placeholder="vervoeging">
+            <button type="button" class="check-btn" onclick="check('q2a','as','Tu as faim. → avoir → tu as.')">Controleer</button>
+          </div>
+          <div id="q2a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Vul in: <em>Nous ___ (aller) au cinéma.</em> (Wij gaan naar de bioscoop.)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q2b" placeholder="vervoeging">
+            <button type="button" class="check-btn" onclick="check('q2b','allons','Nous allons → aller → nous allons.')">Controleer</button>
+          </div>
+          <div id="q2b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Vul in: <em>Ils ___ (prendre) le train.</em> (Zij nemen de trein.)</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q2c" placeholder="vervoeging">
+            <button type="button" class="check-btn" onclick="check('q2c','prennent','Ils prennent → prendre → ils prennent (dubbel-n!).')">Controleer</button>
+          </div>
+          <div id="q2c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h2c')">💡 Hint</button>
+          <div class="hint-tekst" id="h2c">Bij ils/elles verdubbelt de <em>n</em> bij prendre: prennent.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grammatica -->
+    <div class="sectie" id="s3">
+      <div class="kaart">
+        <p class="kaart-titel">Grammatica – Bijvoeglijke naamwoorden</p>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>1.</strong> Zet <em>grand</em> in de vrouwelijke vorm.</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q3a" placeholder="vrouwelijke vorm">
+            <button type="button" class="check-btn" onclick="check('q3a','grande','Grand (m.) → grande (v.): voeg -e toe.')">Controleer</button>
+          </div>
+          <div id="q3a-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>2.</strong> Maak de zin correct: <em>une histoire (intéressant)</em>. Geef de juiste vorm.</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q3b" placeholder="juiste vorm">
+            <button type="button" class="check-btn" onclick="check('q3b','intéressante','Histoire is vrouwelijk → intéressant + e = intéressante.')">Controleer</button>
+          </div>
+          <div id="q3b-fb" hidden></div>
+        </div>
+
+        <div class="vraag-wrap">
+          <p class="vraag-tekst"><strong>3.</strong> Staat <em>petit</em> voor of na het zelfstandig naamwoord?</p>
+          <div class="input-wrap">
+            <input type="text" class="ex-input" id="q3c" placeholder="voor of na">
+            <button type="button" class="check-btn" onclick="check('q3c','voor','Petit hoort bij de uitzonderingen die vóór het zelfstandig naamwoord staan.')">Controleer</button>
+          </div>
+          <div id="q3c-fb" hidden></div>
+          <button type="button" class="hint-knop" onclick="toggleHint('h3c')">💡 Hint</button>
+          <div class="hint-tekst" id="h3c">Uitzonderingen die vóór staan: grand, petit, bon, mauvais, jeune, vieux.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+
+    function check(id, antwoord, uitleg) {localStorage.setItem("studie_frans_phase2","done");
+      const input = document.getElementById(id);
+      if (input.disabled) return;
+      const user = input.value.trim().toLowerCase();
+      const ok = user === antwoord.toLowerCase();
+      const fb = document.getElementById(id + '-fb');
+      fb.hidden = false;
+      fb.className = ok ? 'feedback-goed' : 'feedback-fout';
+      fb.textContent = ok ? uitleg : 'Fout. ' + uitleg;
+      input.disabled = true;
+      const btn = input.nextElementSibling;
+      if (btn) btn.disabled = true;
+    }
+
+    function toggleHint(id) {
+      document.getElementById(id).classList.toggle('zichtbaar');
+    }
+  </script>
+
+</body>
+</html>

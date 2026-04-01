@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frans – Werkwoorden</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <style>
+    .ws-flash-card { text-align:center; padding:24px 16px; }
+    .ws-flash-word { font-size:1.5rem; font-weight:800; margin:12px 0 20px; color:#4361ee; }
+    .ws-counter    { font-size:.85rem; color:#888; margin-bottom:8px; }
+    .ws-input-row  { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+    .ws-score-end  { text-align:center; padding:16px; }
+    .ws-koppel-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+    .koppel-btn { width:100%; padding:10px 8px; font-size:.85rem; border:2px solid #dde; border-radius:8px; background:#fff; cursor:pointer; transition:background .15s,border-color .15s; }
+    .koppel-btn:hover:not(:disabled) { border-color:#4361ee; background:#eff3ff; }
+    .koppel-btn.selected  { border-color:#4361ee; background:#eff3ff; font-weight:700; }
+    .koppel-btn.matched   { border-color:#2ec4b6; background:#e6faf8; color:#065f46; cursor:default; }
+    .koppel-btn.wrong-flash{ border-color:#e63946; background:#fdecea; }
+    .ws-mode-bar   { display:flex; gap:6px; justify-content:center; margin:10px 0; }
+    .ws-mode-btn   { padding:7px 16px; border:2px solid #dde; border-radius:999px; background:#fff; cursor:pointer; font-size:.85rem; transition:background .15s; }
+    .ws-mode-btn.active{ background:#4361ee; color:#fff; border-color:#4361ee; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="frans.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🇫🇷</span>
+      <h1>Werkwoorden Ch.1–4</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="selectChap(1,this)">Ch.1</button>
+      <button type="button" class="nav-btn" onclick="selectChap(2,this)">Ch.2</button>
+      <button type="button" class="nav-btn" onclick="selectChap(3,this)">Ch.3</button>
+      <button type="button" class="nav-btn" onclick="selectChap(4,this)">Ch.4</button>
+    </nav>
+
+    <div class="ws-mode-bar">
+      <button type="button" class="ws-mode-btn" id="btn-vv" onclick="startMode('vv')">Vervoegen</button>
+      <button type="button" class="ws-mode-btn" id="btn-kp" onclick="startMode('kp')">Koppelen</button>
+    </div>
+
+    <div id="exercise"></div>
+
+  </div>
+
+  <script>
+  // Q = {q: question html, a: answer(s), uitleg}
+  const Q = {
+    1: [
+      {q:'<strong>je</strong> ___ (parler)',       a:'parle',    uitleg:'parler → je parle'},
+      {q:'<strong>tu</strong> ___ (parler)',        a:'parles',   uitleg:'parler → tu parles'},
+      {q:'<strong>nous</strong> ___ (parler)',      a:'parlons',  uitleg:'parler → nous parlons'},
+      {q:'<strong>vous</strong> ___ (parler)',      a:'parlez',   uitleg:'parler → vous parlez'},
+      {q:'<strong>ils</strong> ___ (parler)',       a:'parlent',  uitleg:'parler → ils parlent'},
+      {q:'<strong>j\'</strong> ___ (avoir)',        a:'ai',       uitleg:"avoir → j'ai"},
+      {q:'<strong>nous</strong> ___ (avoir)',       a:'avons',    uitleg:'avoir → nous avons'},
+      {q:'<strong>ils</strong> ___ (être)',         a:'sont',     uitleg:'être → ils sont'},
+      {q:'<strong>vous</strong> ___ (être)',        a:'êtes',     uitleg:'être → vous êtes'},
+      {q:'<strong>il</strong> ___ (faire)',         a:'fait',     uitleg:'faire → il fait'},
+      {q:'<strong>nous</strong> ___ (faire)',       a:'faisons',  uitleg:'faire → nous faisons'},
+      {q:'<strong>je</strong> ___ (aller)',         a:'vais',     uitleg:'aller → je vais'},
+      {q:'<strong>vous</strong> ___ (aller)',       a:'allez',    uitleg:'aller → vous allez'},
+      {q:'<strong>je</strong> ___ (prendre)',       a:'prends',   uitleg:'prendre → je prends'},
+      {q:'<strong>ils</strong> ___ (prendre)',      a:'prennent', uitleg:'prendre → ils prennent'},
+    ],
+    2: [
+      {q:'<strong>je</strong> ___ (finir)',         a:'finis',    uitleg:'finir → je finis'},
+      {q:'<strong>tu</strong> ___ (finir)',         a:'finis',    uitleg:'finir → tu finis'},
+      {q:'<strong>il</strong> ___ (finir)',         a:'finit',    uitleg:'finir → il finit'},
+      {q:'<strong>nous</strong> ___ (finir)',       a:'finissons',uitleg:'finir → nous finissons'},
+      {q:'<strong>vous</strong> ___ (finir)',       a:'finissez', uitleg:'finir → vous finissez'},
+      {q:'<strong>ils</strong> ___ (finir)',        a:'finissent',uitleg:'finir → ils finissent'},
+      {q:'<strong>je</strong> ___ (choisir)',       a:'choisis',  uitleg:'choisir → je choisis'},
+      {q:'<strong>nous</strong> ___ (choisir)',     a:'choisissons',uitleg:'choisir → nous choisissons'},
+      {q:'<strong>vous</strong> ___ (choisir)',     a:'choisissez',uitleg:'choisir → vous choisissez'},
+      {q:'<strong>ils</strong> ___ (choisir)',      a:'choisissent',uitleg:'choisir → ils choisissent'},
+      {q:'<strong>je</strong> ___ (réfléchir)',     a:'réfléchis',uitleg:'réfléchir → je réfléchis'},
+      {q:'<strong>nous</strong> ___ (réfléchir)',   a:'réfléchissons',uitleg:'réfléchir → nous réfléchissons'},
+      {q:'<strong>il</strong> ___ (obéir)',         a:'obéit',    uitleg:'obéir → il obéit'},
+      {q:'<strong>vous</strong> ___ (réfléchir)',   a:'réfléchissez',uitleg:'réfléchir → vous réfléchissez'},
+      {q:'<strong>ils</strong> ___ (réfléchir)',    a:'réfléchissent',uitleg:'réfléchir → ils réfléchissent'},
+    ],
+    3: [
+      {q:'<strong>j\'</strong> ___ (manger – passé composé)',   a:"j'ai mangé",  uitleg:"manger: -er → -é. J'ai mangé."},
+      {q:'<strong>tu</strong> ___ (finir – passé composé)',      a:'tu as fini',  uitleg:'finir: -ir → -i. Tu as fini.'},
+      {q:'<strong>il</strong> ___ (faire – passé composé)',      a:'il a fait',   uitleg:'faire → fait (onregelmatig). Il a fait.'},
+      {q:'<strong>nous</strong> ___ (prendre – passé composé)',  a:'nous avons pris',uitleg:'prendre → pris (onregelmatig). Nous avons pris.'},
+      {q:'<strong>vous</strong> ___ (avoir – passé composé)',    a:'vous avez eu',uitleg:'avoir → eu (onregelmatig). Vous avez eu.'},
+      {q:'<strong>ils</strong> ___ (vouloir – passé composé)',   a:'ils ont voulu',uitleg:'vouloir → voulu (onregelmatig). Ils ont voulu.'},
+      {q:'<strong>j\'</strong> ___ (pouvoir – passé composé)',   a:"j'ai pu",    uitleg:"pouvoir → pu (onregelmatig). J'ai pu."},
+      {q:'<strong>elle</strong> ___ (être – passé composé)',     a:'elle a été',  uitleg:'être → été (onregelmatig). Elle a été.'},
+      {q:'<strong>tu</strong> ___ (choisir – passé composé)',    a:'tu as choisi',uitleg:'choisir: -ir → -i. Tu as choisi.'},
+      {q:'<strong>nous</strong> ___ (manger – passé composé)',   a:'nous avons mangé',uitleg:'manger: -er → -é. Nous avons mangé.'},
+      {q:'<strong>il</strong> ___ (porter – passé composé)',     a:'il a porté',  uitleg:'porter: -er → -é. Il a porté.'},
+      {q:'<strong>vous</strong> ___ (faire – passé composé)',    a:'vous avez fait',uitleg:'faire → fait. Vous avez fait.'},
+      {q:'<strong>ils</strong> ___ (prendre – passé composé)',   a:'ils ont pris',uitleg:'prendre → pris. Ils ont pris.'},
+      {q:'<strong>j\'</strong> ___ (acheter – passé composé)',   a:"j'ai acheté", uitleg:"acheter: -er → -é. J'ai acheté."},
+      {q:'<strong>elle</strong> ___ (finir – passé composé)',    a:'elle a fini', uitleg:'finir: -ir → -i. Elle a fini.'},
+    ],
+    4: [
+      {q:'<strong>je</strong> ___ (partir)',        a:'pars',     uitleg:'partir → je pars'},
+      {q:'<strong>il</strong> ___ (partir)',        a:'part',     uitleg:'partir → il part'},
+      {q:'<strong>nous</strong> ___ (partir)',      a:'partons',  uitleg:'partir → nous partons'},
+      {q:'<strong>vous</strong> ___ (sortir)',      a:'sortez',   uitleg:'sortir → vous sortez'},
+      {q:'<strong>ils</strong> ___ (sortir)',       a:'sortent',  uitleg:'sortir → ils sortent'},
+      {q:'<strong>il</strong> ___ (aller – passé composé être)',    a:'il est allé',  uitleg:'aller + être. Mannelijk: allé. Il est allé.'},
+      {q:'<strong>elle</strong> ___ (aller – passé composé être)',  a:'elle est allée',uitleg:'aller + être. Vrouwelijk: allée. Elle est allée.'},
+      {q:'<strong>ils</strong> ___ (partir – passé composé être)',  a:'ils sont partis',uitleg:'partir + être. Meervoud: partis. Ils sont partis.'},
+      {q:'<strong>elle</strong> ___ (arriver – passé composé être)',a:'elle est arrivée',uitleg:'arriver + être. Vrouwelijk: arrivée. Elle est arrivée.'},
+      {q:'<strong>nous</strong> ___ (sortir – passé composé être)', a:'nous sommes sortis',uitleg:'sortir + être. Meervoud: sortis. Nous sommes sortis.'},
+      {q:'<strong>il</strong> ___ (venir – passé composé être)',    a:'il est venu', uitleg:'venir + être. Mannelijk: venu. Il est venu.'},
+      {q:'<strong>elles</strong> ___ (rester – passé composé être)',a:'elles sont restées',uitleg:'rester + être. Vrouwelijk meervoud: restées.'},
+      {q:'<strong>je</strong> ___ (sortir)',        a:'sors',     uitleg:'sortir → je sors'},
+      {q:'<strong>tu</strong> ___ (partir)',        a:'pars',     uitleg:'partir → tu pars'},
+      {q:'<strong>elle</strong> ___ (partir – passé composé être)',a:'elle est partie',uitleg:'partir + être. Vrouwelijk: partie. Elle est partie.'},
+    ]
+  };
+
+  // Koppelen pairs per chapitre
+  const KP = {
+    1: [
+      {l:'je parle',r:'parler – je'},{l:'vous parlez',r:'parler – vous'},
+      {l:"j'ai",r:'avoir – je'},{l:'nous avons',r:'avoir – nous'},
+      {l:'il fait',r:'faire – il'},{l:'ils prennent',r:'prendre – ils'},
+      {l:'je vais',r:'aller – je'},{l:'vous êtes',r:'être – vous'},
+    ],
+    2: [
+      {l:'je finis',r:'finir – je'},{l:'nous finissons',r:'finir – nous'},
+      {l:'ils finissent',r:'finir – ils'},{l:'je choisis',r:'choisir – je'},
+      {l:'vous choisissez',r:'choisir – vous'},{l:'je réfléchis',r:'réfléchir – je'},
+      {l:'nous réfléchissons',r:'réfléchir – nous'},{l:'ils réfléchissent',r:'réfléchir – ils'},
+    ],
+    3: [
+      {l:"j'ai mangé",r:'manger – je'},{l:'tu as fini',r:'finir – tu'},
+      {l:'il a fait',r:'faire – il'},{l:'nous avons pris',r:'prendre – nous'},
+      {l:"j'ai pu",r:'pouvoir – je'},{l:'ils ont voulu',r:'vouloir – ils'},
+      {l:'elle a été',r:'être – elle'},{l:'vous avez eu',r:'avoir – vous'},
+    ],
+    4: [
+      {l:'je pars',r:'partir – je'},{l:'vous sortez',r:'sortir – vous'},
+      {l:'il est allé',r:'aller – il'},{l:'elle est allée',r:'aller – elle'},
+      {l:'ils sont partis',r:'partir – ils'},{l:'elle est arrivée',r:'arriver – elle'},
+      {l:'il est venu',r:'venir – il'},{l:'elles sont restées',r:'rester – elles'},
+    ]
+  };
+
+  let chap=1, mode=null, deck=[], idx=0, score=0, checked=false;
+  let kRound=[], kSelL=null, kMatched=0;
+
+  function selectChap(n,btn){
+    chap=n;
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.ws-mode-btn').forEach(b=>b.classList.remove('active'));
+    mode=null;
+    document.getElementById('exercise').innerHTML='';
+  }
+
+  function startMode(m){
+    mode=m;
+    document.querySelectorAll('.ws-mode-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('btn-'+m).classList.add('active');
+    if(m==='kp') startKoppel(); else startVV();
+  }
+
+  function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+  function normalize(s){return s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+
+  // ── VERVOEGEN ──
+  function startVV(){
+    deck=shuffle(Q[chap]); idx=0; score=0; showVV();
+  }
+  function showVV(){
+    checked=false;
+    const q=deck[idx];
+    document.getElementById('exercise').innerHTML=`
+      <div class="kaart ws-flash-card">
+        <p class="ws-counter">Vraag ${idx+1} van ${deck.length}</p>
+        <p class="ws-flash-word">Vul in: ${q.q}</p>
+        <div class="ws-input-row">
+          <input type="text" class="ex-input" id="ws-inp" placeholder="antwoord" onkeydown="if(event.key==='Enter')wsCheck()">
+          <button type="button" class="check-btn" id="ws-check" onclick="wsCheck()">Controleer</button>
+        </div>
+        <div id="ws-fb" style="margin-top:10px"></div>
+        <div style="margin-top:12px">
+          <button type="button" class="retry-btn" id="ws-next" onclick="wsNext()" hidden>Volgende →</button>
+        </div>
+      </div>`;
+    document.getElementById('ws-inp').focus();
+  }
+  function wsCheck(){
+    if(checked) return;
+    const q=deck[idx];
+    const inp=document.getElementById('ws-inp');
+    const ok=normalize(inp.value)===normalize(q.a);
+    checked=true; if(ok) score++;
+    inp.className='ex-input '+(ok?'correct':'wrong');
+    inp.disabled=true;
+    document.getElementById('ws-check').disabled=true;
+    const fb=document.getElementById('ws-fb');
+    fb.className=ok?'feedback-goed':'feedback-fout';
+    fb.textContent=ok?q.uitleg:'Juist: '+q.a+'. '+q.uitleg;
+    document.getElementById('ws-next').hidden=false;
+  }
+  function wsNext(){
+    idx++;
+    if(idx>=deck.length) showEnd();
+    else showVV();
+  }
+  function showEnd(){
+    document.getElementById('exercise').innerHTML=`
+      <div class="kaart ws-score-end">
+        <p class="kaart-titel">Klaar!</p>
+        <p class="score-display">Score: <strong>${score} van ${deck.length}</strong></p>
+        <button type="button" class="submit-btn" onclick="startVV()" style="margin-top:12px">↺ Opnieuw oefenen</button>
+      </div>`;
+  }
+
+  // ── KOPPELEN ──
+  function startKoppel(){
+    kRound=shuffle(KP[chap]).slice(0,6);
+    kSelL=null; kMatched=0;
+    const lOrd=shuffle(kRound.map((_,i)=>i));
+    const rOrd=shuffle(kRound.map((_,i)=>i));
+    let lH='',rH='';
+    lOrd.forEach(i=>{lH+=`<button type="button" class="koppel-btn" id="kl${i}" onclick="clickL(${i})">${kRound[i].l}</button>`;});
+    rOrd.forEach(i=>{rH+=`<button type="button" class="koppel-btn" id="kr${i}" onclick="clickR(${i})">${kRound[i].r}</button>`;});
+    document.getElementById('exercise').innerHTML=`
+      <div class="kaart">
+        <p class="kaart-titel">Koppelen – Ch.${chap}</p>
+        <p style="font-size:.85rem;color:#888;margin-bottom:4px">Klik een vervoeging, dan het bijbehorende werkwoord + persoon.</p>
+        <div class="ws-koppel-grid"><div>${lH}</div><div>${rH}</div></div>
+        <div id="kp-end" hidden style="text-align:center;margin-top:12px">
+          <p class="score-display">Alle koppels gemaakt!</p>
+          <button type="button" class="submit-btn" onclick="startKoppel()">Nieuwe ronde</button>
+        </div>
+      </div>`;
+  }
+  function clickL(i){
+    const btn=document.getElementById('kl'+i);
+    if(btn.disabled||btn.classList.contains('matched')) return;
+    document.querySelectorAll('.koppel-btn').forEach(b=>{if(!b.classList.contains('matched'))b.classList.remove('selected');});
+    kSelL=i; btn.classList.add('selected');
+  }
+  function clickR(j){
+    if(kSelL===null) return;
+    const lBtn=document.getElementById('kl'+kSelL);
+    const rBtn=document.getElementById('kr'+j);
+    if(rBtn.classList.contains('matched')) return;
+    if(kSelL===j){
+      lBtn.classList.remove('selected'); lBtn.classList.add('matched'); lBtn.disabled=true;
+      rBtn.classList.add('matched'); rBtn.disabled=true;
+      kMatched++; kSelL=null;
+      if(kMatched===6) document.getElementById('kp-end').hidden=false;
+    } else {
+      lBtn.classList.remove('selected'); lBtn.classList.add('wrong-flash'); rBtn.classList.add('wrong-flash');
+      setTimeout(()=>{lBtn.classList.remove('wrong-flash');rBtn.classList.remove('wrong-flash');},600);
+      kSelL=null;
+    }
+  }
+  </script>
+
+</body>
+</html>

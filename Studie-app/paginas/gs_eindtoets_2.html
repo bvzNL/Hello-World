@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis Eindtoets – Deel 2</title>
+  <link rel="stylesheet" href="stijl.css" />
+  <style>
+    .et-meta{text-align:center;margin-bottom:8px}.et-sub{font-size:.85rem;color:#888}
+    .et-progress{display:flex;justify-content:center;gap:16px;font-size:1.5rem;margin:6px 0}
+    .et-progress .done{color:#2ec4b6}.et-progress .now{color:#4361ee}.et-progress .todo{color:#ccc}
+    .et-timer{text-align:right;font-weight:700;font-size:1.1rem}.et-timer.urgent{color:#e63946}
+    .stelling-opts{display:flex;gap:16px;margin:10px 0}
+    .stelling-opts label{display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer}
+    .sub-q{font-size:.88rem;font-weight:700;color:#4361ee;margin:14px 0 4px}
+    .et-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="gs_eindtoets_1.html" class="back-btn">← Terug naar Deel 1</a>
+    <div class="topbar-title">
+      <span class="icon">🏛️</span>
+      <h1>Geschiedenis Eindtoets – Deel 2 van 3</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <div class="et-meta">
+      <p class="et-sub">§5.3 Europese Expansie · Vragen 11–20</p>
+      <div class="et-progress">
+        <span class="done">✓</span><span class="now">●</span><span class="todo">○</span>
+      </div>
+      <div class="et-timer" id="timer">30:00</div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 11 – §5.3 Begrip herkennen</p>
+      <p class="vraag-tekst">Wat verstaan historici onder de "Europese Expansie"?</p>
+      <div class="test-mc">
+        <label id="q11_opt0"><input type="radio" name="q11" value="0"> De groei van Europese steden</label>
+        <label id="q11_opt1"><input type="radio" name="q11" value="1"> De veroveringen en kolonisatie door Europese landen buiten Europa</label>
+        <label id="q11_opt2"><input type="radio" name="q11" value="2"> De verspreiding van het christendom in Europa</label>
+        <label id="q11_opt3"><input type="radio" name="q11" value="3"> De bouw van Europese handelsroutes over land</label>
+      </div>
+      <div id="q11-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 12 – §5.3 Oorzaak</p>
+      <p class="vraag-tekst">Noem één oorzaak waardoor Europese landen nieuwe zeevaartroutes gingen zoeken.</p>
+      <input type="text" class="test-input" id="q12" placeholder="oorzaak">
+      <div id="q12-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 13 – §5.3 Stelling</p>
+      <p class="vraag-tekst">Beoordeel: <em>"Portugal was als eerste Europees land actief in de trans-Atlantische slavenhandel."</em></p>
+      <div class="stelling-opts">
+        <label><input type="radio" name="q13" value="juist"> Juist</label>
+        <label><input type="radio" name="q13" value="onjuist"> Onjuist</label>
+      </div>
+      <div id="q13-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 14 – §5.3 Chronologie</p>
+      <p class="vraag-tekst">Wie ontdekte in 1498 de zeevaartroute naar India via Kaap de Goede Hoop?</p>
+      <div class="test-mc">
+        <label id="q14_opt0"><input type="radio" name="q14" value="0"> Christoffel Columbus</label>
+        <label id="q14_opt1"><input type="radio" name="q14" value="1"> Vasco da Gama</label>
+        <label id="q14_opt2"><input type="radio" name="q14" value="2"> Ferdinand Magelhaen</label>
+        <label id="q14_opt3"><input type="radio" name="q14" value="3"> Bartolomeu Dias</label>
+      </div>
+      <div id="q14-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 15 – §5.3 Gevolg</p>
+      <p class="vraag-tekst">Wat was een belangrijk gevolg van de Europese expansie voor inheemse volkeren?</p>
+      <div class="test-mc">
+        <label id="q15_opt0"><input type="radio" name="q15" value="0"> Ze werden rijker door handel</label>
+        <label id="q15_opt1"><input type="radio" name="q15" value="1"> Velen stierven door ziektes en geweld, anderen werden tot slaaf gemaakt</label>
+        <label id="q15_opt2"><input type="radio" name="q15" value="2"> Ze kregen meer zelfbestuur</label>
+        <label id="q15_opt3"><input type="radio" name="q15" value="3"> Ze namen Europese technieken over zonder nadelen</label>
+      </div>
+      <div id="q15-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 16 – §5.3 Begrip open</p>
+      <p class="vraag-tekst">Wat waren "factorijen"?</p>
+      <input type="text" class="test-input" id="q16" placeholder="omschrijving">
+      <div id="q16-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 17 – §5.3 Stelling</p>
+      <p class="vraag-tekst">Beoordeel: <em>"Columbus bereikte in 1492 de kust van India."</em></p>
+      <div class="stelling-opts">
+        <label><input type="radio" name="q17" value="juist"> Juist</label>
+        <label><input type="radio" name="q17" value="onjuist"> Onjuist</label>
+      </div>
+      <div id="q17-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 18 – §5.3 Oorzaak nader bekeken</p>
+      <p class="vraag-tekst">Waarom wilden Europese landen de Turkse handelsroutes omzeilen?</p>
+      <input type="text" class="test-input" id="q18" placeholder="reden">
+      <div id="q18-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 19 – §5.3 Context</p>
+      <p class="vraag-tekst">Welk land veroverde in de 16e eeuw het Aztekenrijk?</p>
+      <div class="test-mc">
+        <label id="q19_opt0"><input type="radio" name="q19" value="0"> Portugal</label>
+        <label id="q19_opt1"><input type="radio" name="q19" value="1"> Engeland</label>
+        <label id="q19_opt2"><input type="radio" name="q19" value="2"> Spanje</label>
+        <label id="q19_opt3"><input type="radio" name="q19" value="3"> Nederland</label>
+      </div>
+      <div id="q19-fb" hidden></div>
+    </div>
+
+    <div class="kaart">
+      <p class="kaart-titel">Vraag 20 – §5.3 Analyse (meerdelig)</p>
+      <p class="vraag-tekst">Europese expansie had grote gevolgen wereldwijd.</p>
+      <p class="sub-q">a) Wat was de Columbian Exchange?</p>
+      <div class="test-mc">
+        <label id="q20a_opt0"><input type="radio" name="q20a" value="0"> Een handelsverdrag tussen Columbus en de koning van Spanje</label>
+        <label id="q20a_opt1"><input type="radio" name="q20a" value="1"> De uitwisseling van planten, dieren en ziektes tussen Europa en Amerika</label>
+        <label id="q20a_opt2"><input type="radio" name="q20a" value="2"> Een afspraak over slavenhandel</label>
+        <label id="q20a_opt3"><input type="radio" name="q20a" value="3"> Een financieel systeem voor kolonies</label>
+      </div>
+      <div id="q20a-fb" hidden></div>
+      <p class="sub-q">b) Noem één product dat dankzij de expansie vanuit Amerika naar Europa kwam.</p>
+      <input type="text" class="test-input" id="q20b" placeholder="product">
+      <div id="q20b-fb" hidden></div>
+    </div>
+
+    <div id="resultBanner" hidden>
+      <div class="kaart">
+        <p class="kaart-titel">Resultaat Deel 2</p>
+        <p class="score-display">Deel 2: <strong id="scoreDisplay">–</strong></p>
+        <p class="score-display" id="tussenstand"></p>
+        <div class="et-actions">
+          <button type="button" class="retry-btn" onclick="location.reload()">↺ Deel 2 opnieuw</button>
+          <a href="gs_eindtoets_3.html"><button type="button" class="submit-btn">→ Ga naar Deel 3</button></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="submit-btn" id="submitBtn" onclick="controleer()">Controleer deel 2</button>
+    </div>
+
+  </div>
+
+  <script>
+    let secs=30*60,timerID;
+    const timerEl=document.getElementById('timer');
+    function tick(){if(secs<=0){clearInterval(timerID);timerEl.textContent='00:00';return;}secs--;timerEl.textContent=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');timerEl.className='et-timer'+(secs<300?' urgent':'');}
+    timerID=setInterval(tick,1000);
+
+    function n(s){return s.trim().toLowerCase();}
+    function fb(id,ok,correct,uitleg,par){const el=document.getElementById(id);el.hidden=false;el.className=ok?'feedback-goed':'feedback-fout';el.textContent=ok?'['+par+'] '+uitleg:'['+par+'] Juist antwoord: '+correct+'. '+uitleg;}
+    function disInp(id,ok){const el=document.getElementById(id);el.disabled=true;el.classList.add(ok?'correct-answer':'wrong-answer');}
+    function gradeMC(name,correct,opts){const sel=document.querySelector(`input[name="${name}"]:checked`);const val=sel?parseInt(sel.value):-1;opts.forEach((id,i)=>{const lbl=document.getElementById(id);if(i===correct)lbl.classList.add('correct-answer');else if(i===val)lbl.classList.add('wrong-answer');lbl.querySelector('input').disabled=true;});return val===correct;}
+    function gradeSt(name){document.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.disabled=true);const sel=document.querySelector(`input[name="${name}"]:checked`);return sel?sel.value:null;}
+
+    function controleer(){
+      clearInterval(timerID);
+      let score=0;
+
+      const ok11=gradeMC('q11',1,['q11_opt0','q11_opt1','q11_opt2','q11_opt3']);if(ok11)score++;fb('q11-fb',ok11,'Veroveringen en kolonisatie buiten Europa','Europese Expansie = Europese landen veroverden gebieden buiten Europa en vestigden koloniën.','§5.3');
+
+      const v12=n(document.getElementById('q12').value);const ok12=v12.includes('turk')||v12.includes('osmaan')||v12.includes('kruid')||v12.includes('specerij')||v12.includes('handel')||v12.includes('duur');if(ok12)score++;disInp('q12',ok12);fb('q12-fb',ok12,'Turkse routes waren duur/geblokkeerd','De Turkse/Osmaanse handelsroutes waren duur of gevaarlijk → zoektocht naar nieuwe routes.','§5.3');
+
+      const v13=gradeSt('q13');const ok13=v13==='juist';if(ok13)score++;fb('q13-fb',ok13,'Juist','Portugal was inderdaad als eerste groot in de slavenhandel, langs de Afrikaanse kust. Juist.','§5.3');
+
+      const ok14=gradeMC('q14',1,['q14_opt0','q14_opt1','q14_opt2','q14_opt3']);if(ok14)score++;fb('q14-fb',ok14,'Vasco da Gama','Vasco da Gama bereikte India in 1498 via Kaap de Goede Hoop.','§5.3');
+
+      const ok15=gradeMC('q15',1,['q15_opt0','q15_opt1','q15_opt2','q15_opt3']);if(ok15)score++;fb('q15-fb',ok15,'Velen stierven, anderen werden tot slaaf gemaakt','Inheemse bevolkingen leden enorm: epidemieën, geweld en slavernij.','§5.3');
+
+      const v16=n(document.getElementById('q16').value);const ok16=v16.includes('handel')||(v16.includes('post')&&v16.includes('handels'));if(ok16)score++;disInp('q16',ok16);fb('q16-fb',ok16,'handelsposten in vreemde gebieden','Factorijen waren handelsposten die Europese landen vestigden in Azië en Afrika.','§5.3');
+
+      const v17=gradeSt('q17');const ok17=v17==='onjuist';if(ok17)score++;fb('q17-fb',ok17,'Onjuist','Columbus bereikte in 1492 Amerika (de Caraïben), niet India. Onjuist.','§5.3');
+
+      const v18=n(document.getElementById('q18').value);const ok18=v18.includes('duur')||v18.includes('tol')||v18.includes('osmaan')||v18.includes('turk')||v18.includes('gevaar')||v18.includes('goedkop');if(ok18)score++;disInp('q18',ok18);fb('q18-fb',ok18,'Turkse routes waren duur door tol/gevaar','Osmanen hieven hoge tollen; eigen route was goedkoper.','§5.3');
+
+      const ok19=gradeMC('q19',2,['q19_opt0','q19_opt1','q19_opt2','q19_opt3']);if(ok19)score++;fb('q19-fb',ok19,'Spanje','Hernán Cortés veroverde het Aztekenrijk voor Spanje in 1521.','§5.3');
+
+      const ok20a=gradeMC('q20a',1,['q20a_opt0','q20a_opt1','q20a_opt2','q20a_opt3']);fb('q20a-fb',ok20a,'Uitwisseling planten, dieren en ziektes','De Columbian Exchange was de biologische uitwisseling tussen de Oude en Nieuwe Wereld.','§5.3');
+      const v20b=n(document.getElementById('q20b').value);const ok20b=v20b.includes('aardappel')||v20b.includes('tomaat')||v20b.includes('maïs')||v20b.includes('mais')||v20b.includes('cacao')||v20b.includes('tabak');disInp('q20b',ok20b);fb('q20b-fb',ok20b,'bijv. aardappel, tomaat, maïs, cacao, tabak','Vanuit Amerika kwamen o.a. aardappel, tomaat, maïs, cacao en tabak naar Europa.','§5.3');
+      if(ok20a&&ok20b)score++;
+
+      localStorage.setItem('gs_d2',score);
+      const d1=parseInt(localStorage.getItem('gs_d1')||0);
+      document.getElementById('scoreDisplay').textContent=score+' van 10';
+      document.getElementById('tussenstand').textContent='Tussenstand — Deel 1: '+d1+'/10 · Deel 2: '+score+'/10';
+      document.getElementById('resultBanner').hidden=false;
+      document.getElementById('resultBanner').scrollIntoView({behavior:'smooth'});
+      document.getElementById('submitBtn').hidden=true;
+    }
+  </script>
+
+</body>
+</html>

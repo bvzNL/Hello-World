@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Studie-app — Jaar 2 naar Jaar 3</title>
-  <link rel="stylesheet" href="stijl.css" />
+  <link rel="stylesheet" href="paginas/stijl.css" />
 </head>
 <body>
 
@@ -64,6 +64,14 @@
         ready: true,
       },
       {
+        id: 'frans',
+        label: 'Frans',
+        sublabel: 'Bravoure 2 HAVO/VWO',
+        icon: '🇫🇷',
+        accent: '#e63946',
+        ready: true,
+      },
+      {
         id: 'nederlands',
         label: 'Nederlands',
         sublabel: 'Taal, lezen & schrijven',
@@ -93,7 +101,7 @@
         sublabel: 'Mens en Maatschappij',
         icon: '🏛️',
         accent: '#8b5cf6',
-        ready: false,
+        ready: true,
       },
       {
         id: 'aardrijkskunde',
@@ -182,7 +190,7 @@
         card.className = 'subject-card' + (subject.ready ? '' : ' coming-soon');
 
         if (subject.ready) {
-          card.href = `${subject.id}.html`;
+          card.href = `paginas/${subject.id}.html`;
         }
 
         card.style.setProperty('--accent', subject.accent);

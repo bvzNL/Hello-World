@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschiedenis §5.4 – Theorie</title>
+  <link rel="stylesheet" href="stijl.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="geschiedenis.html" class="back-btn">← Terug</a>
+    <div class="topbar-title">
+      <span class="icon">🏛️</span>
+      <h1>§5.4 – De Republiek</h1>
+    </div>
+  </div>
+
+  <div class="menu-wrap">
+
+    <nav class="nav-bar">
+      <button type="button" class="nav-btn active" onclick="toon('s1',this)">Ontstaan</button>
+      <button type="button" class="nav-btn" onclick="toon('s2',this)">De Republiek</button>
+      <button type="button" class="nav-btn" onclick="toon('s3',this)">Gouden Eeuw</button>
+    </nav>
+
+    <!-- Ontstaan -->
+    <div class="sectie actief" id="s1">
+      <div class="kaart">
+        <p class="kaart-titel">Ontstaan van de Republiek</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span><strong>De Opstand</strong>: De Nederlanden kwamen in opstand tegen het Spaanse bewind van Filips II. De hoge belastingen en de strenge aanpak van protestanten (Alba's Raad van Beroerte) leidden tot verzet.</li>
+          <li><span class="step-num">2</span><strong>Willem van Oranje</strong>: Willem van Oranje werd de leider van de opstand. Hij probeerde de gewesten te verenigen tegen Spanje. In 1584 werd hij vermoord in Delft.</li>
+          <li><span class="step-num">3</span><strong>Unie van Utrecht (1579)</strong>: De noordelijke gewesten sloten de Unie van Utrecht – een militair verbond tegen Spanje. In 1581 verklaarden zij zich onafhankelijk via het <em>Plakkaat van Verlatinghe</em>.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Opstand tegen Spanje door hoge belastingen en godsdienstvervolging.<br>
+          Willem van Oranje: leider van de opstand, vermoord 1584.<br>
+          1579: Unie van Utrecht; 1581: onafhankelijkheidsverklaring.
+        </div>
+      </div>
+    </div>
+
+    <!-- De Republiek -->
+    <div class="sectie" id="s2">
+      <div class="kaart">
+        <p class="kaart-titel">De Republiek der Zeven Verenigde Nederlanden</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span><strong>Bestuur</strong>: De Republiek bestond uit zeven gewesten (o.a. Holland, Zeeland, Utrecht). Elk gewest had veel zelfstandigheid. De Staten-Generaal regelden gemeenschappelijke zaken zoals oorlog en buitenlandse politiek.</li>
+          <li><span class="step-num">2</span><strong>Stadhouder</strong>: De stadhouder was de militaire leider. In Holland was dit meestal een lid van het huis Oranje-Nassau. Hij had geen absolute macht – de regenten (rijke kooplieden) hadden veel invloed.</li>
+          <li><span class="step-num">3</span><strong>Godsdienstvrijheid</strong>: De Republiek was relatief tolerant. Andere geloven werden gedoogd, al was de Gereformeerde Kerk de officiële kerk. Dit trok veel vluchtelingen en geleerden aan.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          Zeven gewesten met veel autonomie; Staten-Generaal voor gemeenschappelijke zaken.<br>
+          Stadhouder = militair leider (Oranje-Nassau).<br>
+          Relatieve godsdienstvrijheid trok handelaren en geleerden aan.
+        </div>
+      </div>
+    </div>
+
+    <!-- Gouden Eeuw -->
+    <div class="sectie" id="s3">
+      <div class="kaart">
+        <p class="kaart-titel">De Gouden Eeuw (17e eeuw)</p>
+        <ol class="steps">
+          <li><span class="step-num">1</span><strong>Handel en VOC</strong>: De Republiek werd een wereldhandelsmacht. In 1602 werd de <em>VOC</em> (Vereenigde Oost-Indische Compagnie) opgericht – de eerste naamloze vennootschap ter wereld. De VOC dreef handel met Azië en vestigde handelsposten.</li>
+          <li><span class="step-num">2</span><strong>Amsterdam</strong>: Amsterdam groeide uit tot het handels- en financiële centrum van Europa. De eerste beurs ter wereld werd er opgericht. Rijke kooplieden bouwden grachtenpanden.</li>
+          <li><span class="step-num">3</span><strong>Kunst en wetenschap</strong>: De welvaart leidde tot een bloei van kunst (Rembrandt, Vermeer) en wetenschap (Huygens, Leeuwenhoek). Dit tijdperk noemen we de Gouden Eeuw.</li>
+        </ol>
+        <div class="onthoud-dit">
+          <strong>Onthoud dit</strong>
+          VOC (1602): eerste naamloze vennootschap, handel met Azië.<br>
+          Amsterdam: handelscentrum van Europa, eerste beurs.<br>
+          Gouden Eeuw: bloei van kunst (Rembrandt) en wetenschap.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toon(id, knop) {
+      document.querySelectorAll('.sectie').forEach(s => s.classList.remove('actief'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('actief');
+      knop.classList.add('active');
+    }
+  </script>
+
+<script>localStorage.setItem("studie_geschiedenis_phase1","done");</script>
+</body>
+</html>
